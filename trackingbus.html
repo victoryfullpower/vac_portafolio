@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Organiza tu Viaje | Mi Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/trackingbus.css">
+</head>
+<body>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="/index.html">Portafolio</a>
+            <span class="separador">/</span>
+            <a href="#">App Organiza tu Viaje</a>
+        </div>
+        <h1>App Organiza tu Viaje</h1>
+        <p>Seguimiento en tiempo real de buses</p>
+    </section>
+    
+    <div class="container">
+        <!-- Encabezado del proyecto -->
+        <div class="proyecto-header">
+            <div class="proyecto-info">
+                <div class="proyecto-meta">
+                    <p><strong>Cliente:</strong> ATU</p>
+                    <p><strong>Año:</strong> 2024</p>
+                    <p><strong>Rol:</strong> Desarrollador Frontend</p>
+                    
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Flutter</span>
+                        <span class="tecnologia">Dart</span>
+                        <span class="tecnologia">Riverpod</span>
+                        <span class="tecnologia">FlutterMap</span>
+                    </div>
+                </div>
+                
+                <p>App con Mapa interactivo que te permitira calcular tiempos y organizar tu día</p>
+                
+                <div class="botones-accion">
+                    <button class="btn" onclick="abrirModal('video-demo')">
+                        <i class="fas fa-play"></i> Ver demo
+                    </button>
+                    <button class="btn btn-outline" onclick="abrirModal('codigo-fuente')">
+                        <i class="fab fa-github"></i> Código fuente
+                    </button>
+                </div>
+            </div>
+            
+            <div class="proyecto-imagen-principal">
+                <img src="assets/images/detallePortada.png" alt="App Organiza tu Viaje">
+            </div>
+        </div>
+        
+        <!-- Sección de video -->
+        <div class="seccion">
+            <h2>Demo del producto</h2>
+            <p>Presiona el botón para ver demostracion de Ingreso con Gmail</p>
+            <button class="btn" onclick="abrirModal('video-demo2')">
+                <i class="fas fa-play"></i> Reproducir demo
+            </button>
+            <button class="btn btn-outline" onclick="abrirModal('codigo-arqui')">
+                <i class="fab fa-github"></i> Arquitectura
+            </button>
+        </div>
+        
+        <!-- Sección de descripción -->
+        <div class="seccion">
+            <h2>Acerca del proyecto</h2>
+            <p>El aplicativo ATU DESTINO busca integrar el sistema de transporte público de Lima y Callao para brindar un mejor servicio mediante un software que permita planificar los viajes.</p>
+            
+            <h3>Desafíos</h3>
+            <ul>
+                <li>Organizar fuentes de datos de todos los servicios(normalizar)</li>
+                <li>Optimizacion de la carga de logica, en front y back</li>
+                <li>Garantizar rendimiento con actualizaciones en tiempo real</li>
+            </ul>
+            
+            <h3>Soluciones implementadas</h3>
+            <ul>
+                <li>Creacion de base datos en el dispositivo para ahorro de consumo de servicios</li>
+                <li>Integracion de plugin con animacion de movimiento de buses en funcion de centroid</li>
+                <li>Integrar consumo de websocket para ahorro de servicios</li>
+                <li>Integracion con firebase para autentificacion</li>
+            </ul>
+        </div>
+        
+        <!-- Carrusel de Multimedia -->
+        <div class="seccion">
+            <h2>Galería Multimedia</h2>
+            <div class="carrusel-container">
+                <div class="carrusel" id="carrusel">
+                    <!-- Imágenes -->
+                    <div class="carrusel-item" onclick="abrirModal('imagen1')">
+                        <img src="assets/images/organigrama.jpg" 
+                             alt="Vista general del dashboard">
+                    </div>
+                    <div class="carrusel-item" onclick="abrirModal('imagen2')">
+                        <img src="assets/images/filterbus.jpg" 
+                             alt="Detalle de gráficos">
+                    </div>
+                    <!-- Video 1 -->
+                    <div class="carrusel-item" onclick="abrirModal('video1')">
+                        <video poster="assets/images/vidcar1.png">
+                            <source src="#" type="video/mp4">
+                        </video>
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <!-- Imagen 3 -->
+                    <div class="carrusel-item" onclick="abrirModal('imagen3')">
+                        <img src="assets/images/iconos.jpg" 
+                             alt="Vista móvil responsive">
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="carrusel-item" onclick="abrirModal('video2')">
+                        <video poster="assets/images/vidcar2.png">
+                            <source src="#" type="video/mp4">
+                        </video>
+                        <div class="play-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <!-- Imagen 4 -->
+                    <div class="carrusel-item" onclick="abrirModal('imagen4')">
+                        <img src="assets/images/sample1.jpg" 
+                             alt="Vista móvil responsive">
+                    </div>
+                </div>
+                <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+                <button class="carrusel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+            </div>
+        </div>
+        
+        <!-- Sección de testimonios -->
+        <div class="seccion">
+            <h2>Feedback del cliente</h2>
+            <blockquote>
+                "El app a permitido integrar las unidades de transporte publico, su uso ayudara a que las personas puedan organizar sus viajes de forma mas organizada"
+                <footer>— Manuel Rosas, Jefe de unidad tecnologica</footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <!-- MODALES -->
+    <!-- Modal para Video Demo principal -->
+    <div id="modal-video-demo" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalConVideo('video-demo')">&times;</span>
+            <h2>Demo: App Organiza tu Viaje</h2>
+            <div class="modal-video-container">
+                <iframe id="youtube-video-demo" class="youtube-iframe" src="https://www.youtube.com/embed/dC5FvScThRo?enablejsapi=1" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-video-demo2" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalConVideo('video-demo2')">&times;</span>
+            <h2>Demo: Ingreso Usuario usando gmail</h2>
+            <div class="modal-video-container">
+                <iframe id="youtube-video-demo2" class="youtube-iframe" src="https://www.youtube.com/embed/lTAkX9Af9Nc?enablejsapi=1" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para Código Fuente -->
+    <div id="modal-codigo-fuente" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h2>Código Fuente</h2>
+            <img src="assets/images//estructuracarpetas.png" 
+                 alt="Captura de código" 
+                 class="modal-imagen">
+            <!-- <div style="text-align: center; margin-top: 1rem;">
+                <a href="https://github.com" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> Ver repositorio completo
+                </a>
+            </div> -->
+        </div>
+    </div>
+
+    <div id="modal-codigo-arqui" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h2>Arquitectura</h2>
+            <img src="assets/images/architecture_diagram.jpeg" 
+                 alt="Captura de código" 
+                 class="modal-imagen">
+            <!-- <div style="text-align: center; margin-top: 1rem;">
+                <a href="https://github.com" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> Ver repositorio completo
+                </a>
+            </div> -->
+        </div>
+    </div>
+    
+    <!-- Modals para imágenes de galería -->
+    <div id="modal-imagen1" class="modal">
+        <div class="modal-contenido" style="max-width: 90%;">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <img src="assets/images/organigrama.jpg" 
+                 alt="organigrama" 
+                 class="modal-imagen">
+        </div>
+    </div>
+    
+    <div id="modal-imagen2" class="modal">
+        <div class="modal-contenido" style="max-width: 90%;">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <img src="assets/images/filterbus.jpg" 
+                 alt="filtro" 
+                 class="modal-imagen">
+        </div>
+    </div>
+    
+    <div id="modal-imagen3" class="modal">
+        <div class="modal-contenido" style="max-width: 90%;">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <img src="assets/images/iconos.jpg" 
+                 alt="Vista móvil" 
+                 class="modal-imagen">
+        </div>
+    </div>
+
+    <div id="modal-imagen4" class="modal">
+        <div class="modal-contenido" style="max-width: 90%;">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <img src="assets/images/sample1.jpg" 
+                 alt="Vista móvil" 
+                 class="modal-imagen">
+        </div>
+    </div>
+    
+    <!-- Modals para videos de galería -->
+    <div id="modal-video1" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalConVideo('video1')">&times;</span>
+            <h2>Video Demo 1</h2>
+            <div class="modal-video-container">
+                <iframe id="youtube-video1" class="youtube-iframe" src="https://www.youtube.com/embed/hDQr86O6Q2A?enablejsapi=1" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-video2" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModalConVideo('video2')">&times;</span>
+            <h2>Video Demo 2</h2>
+            <div class="modal-video-container">
+                <iframe id="youtube-video2" class="youtube-iframe" src="https://www.youtube.com/embed/J1uG_nvgAas?enablejsapi=1" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <h2>¿Interesado en un proyecto similar?</h2>
+        <p>Contáctame para discutir cómo puedo ayudar con tu próximo proyecto de visualización de datos</p>
+        <a href="mailto:tuemail@example.com" class="btn" style="margin-top: 1rem;">
+            <i class="fas fa-envelope"></i> Enviar mensaje
+        </a>
+    </footer>
+
+    <script>
+        // Variables para el carrusel
+        let currentIndex = 0;
+        const carrusel = document.getElementById('carrusel');
+        const items = document.querySelectorAll('.carrusel-item');
+        const itemCount = items.length;
+        
+        // Función para mover el carrusel
+        function moverCarrusel(direction) {
+            currentIndex = (currentIndex + direction + itemCount) % itemCount;
+            updateCarrusel();
+        }
+        
+        function updateCarrusel() {
+            const itemWidth = items[0].offsetWidth + 15; // Ancho del item + gap
+            carrusel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+        
+        // Inicializar el carrusel
+        updateCarrusel();
+        
+        // Cargar API de YouTube
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // Variables para los reproductores
+        var players = {};
+        
+        // Función para crear reproductores
+        function onYouTubeIframeAPIReady() {
+            players['video-demo'] = new YT.Player('youtube-video-demo');
+            players['video-demo2'] = new YT.Player('youtube-video-demo2');
+            players['video1'] = new YT.Player('youtube-video1');
+            players['video2'] = new YT.Player('youtube-video2');
+        }
+        
+        // Función para cerrar modales con video
+        function cerrarModalConVideo(id) {
+            if (players[id]) {
+                players[id].pauseVideo();
+            }
+            document.getElementById(`modal-${id}`).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Función para abrir modales
+        function abrirModal(id) {
+            document.getElementById(`modal-${id}`).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Si es un video, pausar otros videos
+            if (id.includes('video')) {
+                for (const playerId in players) {
+                    if (playerId !== id && players[playerId]) {
+                        players[playerId].pauseVideo();
+                    }
+                }
+            }
+        }
+        
+        // Función genérica para cerrar modales
+        function cerrarModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+            
+            // Pausar todos los videos al cerrar cualquier modal
+            for (const playerId in players) {
+                if (players[playerId]) {
+                    players[playerId].pauseVideo();
+                }
+            }
+        }
+        
+        // Ajustar el carrusel al redimensionar la ventana
+        window.addEventListener('resize', updateCarrusel);
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                cerrarModal();
+            }
+        }
+    </script>
+</body>
+</html>

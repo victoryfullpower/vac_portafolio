@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analítico | Mi Portafolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --color-fondo: #F7FFF7;
+            --color-oscuro: #292F36;
+            --color-acento: #FFE66D;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-oscuro);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb .separador {
+            opacity: 0.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .proyecto-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .proyecto-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .proyecto-meta {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .proyecto-tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tecnologia {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .proyecto-imagen-principal {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .proyecto-imagen-principal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .seccion {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--color-primario);
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-acento);
+        }
+        
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .galeria img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .galeria img:hover {
+            transform: scale(1.03);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-primario);
+            color: var(--color-primario);
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-primario);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--color-oscuro);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .proyecto-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="breadcrumb">
+            <a href="../index.html">Portafolio</a>
+            <span class="separador">/</span>
+            <a href="#">App Organiza tu Viaje</a>
+        </div>
+        <h1>App Organiza tu Viaje</h1>
+        <p>Seguimiento en tiempo real de buses</p>
+    </section>
+    
+    <div class="container">
+        <!-- Encabezado del proyecto -->
+        <div class="proyecto-header">
+            <div class="proyecto-info">
+                <div class="proyecto-meta">
+                    <p><strong>Cliente:</strong> ATU</p>
+                    <p><strong>Año:</strong> 2024</p>
+                    <p><strong>Rol:</strong> Desarrollador Frontend</p>
+                    
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Flutter</span>
+                        <span class="tecnologia">Dart</span>
+                        <span class="tecnologia">Riverpod</span>
+                        <span class="tecnologia">FlutterMap</span>
+                    </div>
+                </div>
+                
+                <p>App con Mapa interactivo que te permitira calcular tiempos y organizar tu día</p>
+                
+                <div class="botones-accion">
+                    <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Ver en vivo</a>
+                    <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Código fuente</a>
+                </div>
+            </div>
+            
+            <div class="proyecto-imagen-principal">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dashboard Analítico">
+            </div>
+        </div>
+        
+        <!-- Sección de video -->
+        <div class="seccion">
+            <h2>Demo del producto</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <!-- Sección de descripción -->
+        <div class="seccion">
+            <h2>Acerca del proyecto</h2>
+            <p>Este dashboard fue desarrollado para ayudar al equipo ejecutivo de Tech Solutions a monitorear métricas clave de negocio en tiempo real. El principal desafío fue presentar grandes volúmenes de datos de manera intuitiva y accionable.</p>
+            
+            <h3>Desafíos</h3>
+            <ul>
+                <li>Integrar múltiples fuentes de datos en una sola vista unificada</li>
+                <li>Crear visualizaciones que fueran comprensibles para usuarios no técnicos</li>
+                <li>Garantizar rendimiento con actualizaciones en tiempo real</li>
+            </ul>
+            
+            <h3>Soluciones implementadas</h3>
+            <ul>
+                <li>Sistema de filtros jerárquicos para navegación de datos</li>
+                <li>Gráficos interactivos con tooltips detallados</li>
+                <li>Modo "histórico" para comparar períodos de tiempo</li>
+                <li>Exportación de reportes en PDF/CSV</li>
+            </ul>
+        </div>
+        
+        <!-- Sección de galería -->
+        <div class="seccion">
+            <h2>Galería</h2>
+            <div class="galeria">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Vista general del dashboard">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Detalle de gráficos">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Vista móvil responsive">
+            </div>
+        </div>
+        
+        <!-- Sección de testimonios -->
+        <div class="seccion">
+            <h2>Feedback del cliente</h2>
+            <blockquote style="background: white; padding: 1.5rem; border-left: 4px solid var(--color-secundario); font-style: italic;">
+                "El dashboard ha transformado nuestra forma de analizar datos. Ahora podemos identificar tendencias y tomar decisiones en minutos en lugar de días. La interfaz intuitiva hizo que la adopción por parte del equipo fuera inmediata."
+                <footer style="margin-top: 1rem; font-style: normal; font-weight: bold;">— Carlos Méndez, Director de Operaciones</footer>
+            </blockquote>
+        </div>
+    </div>
+    
+    <footer>
+        <h2>¿Interesado en un proyecto similar?</h2>
+        <p>Contáctame para discutir cómo puedo ayudar con tu próximo proyecto de visualización de datos</p>
+        <a href="mailto:tuemail@example.com" class="btn" style="margin-top: 1rem;"><i class="fas fa-envelope"></i> Enviar mensaje</a>
+    </footer>
+</body>
+</html>
