@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Creativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --color-fondo: #F7FFF7;
+            --color-oscuro: #292F36;
+            --color-acento: #FFE66D;
+            --color-texto: #333;
+            --color-texto-claro: #f8f8f8;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            --color-fondo: #121212;
+            --color-oscuro: #e0e0e0;
+            --color-texto: #f8f8f8;
+            --color-texto-claro: #f8f8f8;
+            --color-acento: #FFA500;
+        }
+
+        /* Efecto de partículas */
+        @keyframes particle-move {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--move-x), var(--move-y));
+                opacity: 0;
+            }
+        }
+
+        /* Animación título */
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+
+            50% {
+                text-shadow: 0 0 20px var(--color-acento), 0 0 30px rgba(255, 255, 255, 0.6);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Animación gradiente */
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Efecto de onda */
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(2deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(-2deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Pantalla de carga */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Nueva animación para proyectos */
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.3s ease;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario), var(--color-primario));
+            background-size: 300% 300%;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            animation:
+                gradient-shift 8s ease infinite,
+                wave 8s ease-in-out infinite;
+        }
+
+        /* Partículas */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 20%);
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-move 3s linear infinite;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: title-glow 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: transparent;
+            background: linear-gradient(45deg, white, var(--color-acento), white);
+            background-clip: text;
+            -webkit-background-clip: text;
+            z-index: -1;
+            transform: translateZ(-30px);
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+
+        .subtitulo {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .subtitulo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: white;
+            animation:
+                expand 2s ease infinite,
+                pulse-opacity 2s ease infinite;
+        }
+
+        @keyframes expand {
+            0% {
+                width: 50px;
+            }
+
+            50% {
+                width: 100px;
+            }
+
+            100% {
+                width: 50px;
+            }
+        }
+
+        @keyframes pulse-opacity {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Efecto de cursor brillante */
+        .cursor-effect {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sección Sobre Mí */
+        .sobre-mi {
+            background-color: white;
+            padding: 4rem 0;
+            margin: -3rem auto 3rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        body.dark-mode .sobre-mi {
+            background: #1e1e1e;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .perfil {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .foto-perfil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .foto-perfil:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--color-primario);
+        }
+
+        .bio {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .habilidades {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .habilidades span {
+            background-color: var(--color-acento);
+            color: var(--color-oscuro);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .habilidades span {
+            color: #121212;
+        }
+
+        .habilidades span:hover {
+            background-color: var(--color-primario);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Filtros */
+        .filtros {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-filtro {
+            background: none;
+            border: 2px solid var(--color-secundario);
+            color: var(--color-texto);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-filtro.active,
+        .btn-filtro:hover {
+            background-color: var(--color-secundario);
+            color: white;
+        }
+
+        body.dark-mode .btn-filtro {
+            border-color: var(--color-primario);
+        }
+
+        body.dark-mode .btn-filtro.active,
+        body.dark-mode .btn-filtro:hover {
+            background-color: var(--color-primario);
+        }
+
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .proyecto {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            animation: slideIn 0.8s forwards;
+        }
+
+        .proyecto:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .proyecto:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .proyecto:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        body.dark-mode .proyecto {
+            background: #1e1e1e;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .proyecto:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .proyecto-imagen {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proyecto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        .proyecto:hover .proyecto-imagen img {
+            transform: scale(1.1);
+        }
+
+        /* Efecto de dispositivo móvil */
+        .mobile-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="5" y="5" width="90" height="90" rx="10" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/></svg>') no-repeat center center;
+            pointer-events: none;
+        }
+
+        .proyecto-contenido {
+            padding: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .proyecto:hover .proyecto-contenido {
+            transform: translateY(-5px);
+        }
+
+        .proyecto-titulo {
+            color: var(--color-primario);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .proyecto:hover .proyecto-titulo {
+            color: var(--color-secundario);
+        }
+
+        .proyecto-tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tecnologia {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .proyecto:hover .tecnologia {
+            background-color: var(--color-primario);
+            transform: translateY(-2px);
+        }
+
+        .proyecto-descripcion {
+            color: #555;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .proyecto-descripcion {
+            color: #b0b0b0;
+        }
+
+        .proyecto:hover .proyecto-descripcion {
+            color: var(--color-texto);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background-color: var(--color-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .redes-sociales a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .redes-sociales a:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .redes-sociales a:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .redes-sociales a:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* WhatsApp */
+        .redes-sociales a.whatsapp {
+            background-color: #25D366;
+        }
+
+        /* Facebook */
+        .redes-sociales a.facebook {
+            background-color: #3b5998;
+        }
+
+        /* Instagram */
+        .redes-sociales a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+        }
+
+        /* Email */
+        .redes-sociales a.email {
+            background-color: #D44638;
+        }
+
+        .redes-sociales a:hover {
+            transform: translateY(-5px) scale(1.1);
+            animation: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Botón modo oscuro */
+        .btn-dark-mode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        body.dark-mode .btn-dark-mode {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-dark-mode:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: rotate(30deg) scale(1.1);
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, #292F36, #1a1a1a, #292F36);
+        }
+
+        body.dark-mode .btn-language,
+        body.dark-mode .btn-cv-download {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--color-acento);
+            /* Usa el color de acento para mejor contraste */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .btn-language:hover,
+        body.dark-mode .btn-cv-download:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        /* Botones de idioma y CV */
+        .btn-header-control.active {
+            background: var(--color-primario) !important;
+            color: white !important;
+        }
+
+        .language-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .btn-language {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-language:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cv-downloads {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cv-download {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cv-download:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .btn-language,
+        body.dark-mode .btn-cv-download {
+            background: rgba(0, 0, 0, 0.7);
+            /* Fondo más opaco */
+            color: var(--color-acento);
+            border: 1px solid var(--color-acento);
+        }
+
+        body.dark-mode .btn-language:hover,
+        body.dark-mode .btn-cv-download:hover {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitulo {
+                font-size: 1.2rem;
+            }
+
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .habilidades {
+                justify-content: center;
+            }
+
+            .sobre-mi {
+                margin-top: -2rem;
+                padding: 2rem 1rem;
+            }
+
+            /* Simplificar animaciones en móviles */
+            .proyecto,
+            header,
+            footer {
+                animation: none !important;
+            }
+
+            header {
+                animation: gradient-shift 8s ease infinite !important;
+            }
+
+            .proyecto {
+                opacity: 1 !important;
+                animation: none !important;
+            }
+
+            .language-buttons {
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cv-downloads {
+                flex-direction: column;
+            }
+        }
+
+        /* Controles izquierdos - Versión compacta horizontal */
+        .header-left-controls {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .btn-header-control {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-header-control:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .btn-header-control {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-acento);
+        }
+
+        body.dark-mode .btn-header-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Controles del header - Versión solo texto */
+        .header-left-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 100;
+            max-width: 80%;
+        }
+
+        .btn-header-control {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .btn-header-control {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--color-acento);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile: Ajuste de tamaño */
+        @media (max-width: 768px) {
+            .header-left-controls {
+                top: 15px;
+                left: 10px;
+                gap: 5px;
+            }
+
+            .btn-header-control {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+
+            @media (max-width: 768px) {
+                header {
+                    animation:
+                        gradient-shift 8s ease infinite,
+                        mobile-wave 10s ease-in-out infinite !important;
+                }
+
+                @keyframes mobile-wave {
+
+                    0%,
+                    100% {
+                        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+                    }
+
+                    50% {
+                        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 95%);
+                    }
+                }
+
+                header::before {
+                    animation: particle-mobile 15s linear infinite;
+                }
+
+                @keyframes particle-mobile {
+                    0% {
+                        background-position: 0 0;
+                    }
+
+                    100% {
+                        background-position: 100% 100%;
+                    }
+                }
+            }
+        }
+
+        /* Pantallas muy pequeñas */
+        @media (max-width: 400px) {
+            .btn-header-control {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Estilos para el botón de audio integrado */
+        /* Controles inline */
+        .audio-controls {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Botón Parlante (verde) */
+        .speaker-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .speaker-btn:hover {
+            transform: scale(1.1);
+            background: #27ae60;
+        }
+
+        /* Botón Reinicio (gris) */
+        .reset-btn {
+            background: #f1f1f1;
+            color: #555;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .speaker-btn {
+            background: #27ae60;
+        }
+
+        body.dark-mode .reset-btn {
+            background: #555;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .reset-btn:hover {
+            background: #444;
+        }
+
+
+
+        /* Estilos del reproductor */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(200px);
+            transition: transform 0.3s ease;
+            
+            backdrop-filter: blur(10px);
+        }
+
+        .music-player:hover {
+            transform: translateX(0);
+        }
+
+        .player-header {
+            padding: 10px;
+            background: var(--color-primario);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .playlist {
+            padding: 10px;
+        }
+
+       
+
+        
+
+        .play-btn {
+    background: var(--color-secundario);
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;    /* Cambiado a inline-flex */
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;         /* Evitar que se encoja */
+    line-height: 1;         /* Asegurar alineación vertical */
+}
+
+/* Para el texto del track */
+.track span {
+    flex-grow: 1;
+    text-align: left;
+    padding-right: 10px;
+}
+
+/* Estructura del track */
+.track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+        .player-close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .music-player {
+            background: rgba(40, 40, 40, 0.9);
+            color: white;
+        }
+
+        body.dark-mode .track {
+            border-bottom: 1px solid #444;
+        }
+
+        /* Estilo para la canción actual */
+        .track.active {
+            background: rgba(78, 205, 196, 0.15);
+            border-left: 3px solid var(--color-secundario);
+        }
+
+
+        
+        /* Cuadro de activación */
+        .music-permission-box {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            max-width: 200px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        #enable-music {
+            background: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        #enable-music:hover {
+            background: var(--color-oscuro);
+            transform: scale(1.05);
+        }
+
+
+
+        /* Estilos del modal permiso audio*/
+        .music-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .music-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .music-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .track-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+        }
+
+        .music-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .modal-footer {
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--color-primario);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-oscuro);
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .modal-content {
+            background: #2d2d2d;
+            color: white;
+        }
+
+        body.dark-mode .modal-body {
+            color: #eee;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #3d3d3d;
+            color: #eee;
+        }
+
+        body.dark-mode .track-preview {
+            background: rgba(78, 205, 196, 0.2);
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div id="music-modal" class="music-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎵 Experiencia Musical</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Deseas disfrutar de música de fondo mientras exploras el portafolio?</p>
+                <div class="track-preview">
+                    <img src="assets/music-icon.png" alt="Música" class="music-icon">
+                    <span>Playlist de ambiente</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="decline-music">Ahora no</button>
+                <button class="btn-primary" id="activate-music">¡Activar música!</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p style="color: white; margin-top: 20px;">Cargando portafolio...</p>
+    </div>
+
+    <header>
+        <button id="toggle-dark-mode" class="btn-dark-mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div class="header-left-controls">
+            <!-- Botón de idioma -->
+            <button id="toggle-language" class="btn-header-control" data-lang="es">
+                <i class="fas fa-language"></i> EN
+            </button>
+
+            <!-- Botones de CV -->
+            <a href="tu-cv.pdf" id="download-cv-es" class="btn-header-control" download>
+                CV Español
+            </a>
+            <a href="your-cv.pdf" id="download-cv-en" class="btn-header-control" download>
+                CV English
+            </a>
+        </div>
+
+        <h1 data-text="Mi Portafolio Creativo">Mi Portafolio Creativo</h1>
+        <p class="subtitulo">Diseño • Desarrollo • Innovación</p>
+        <div id="particles-container"></div>
+    </header>
+
+    <section class="sobre-mi">
+        <div class="container">
+            <div class="perfil">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    alt="Tu foto" class="foto-perfil">
+                <div class="bio">
+
+                    <h2>
+                        <span id="greeting-text">¡Hola, soy [Tu Nombre]!</span>
+                        <!-- MOVER LOS CONTROLES AQUÍ -->
+                        <div class="audio-controls">
+                            <button class="speaker-btn" title="Reproducir/Pausar">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <button class="reset-btn" title="Reiniciar audio">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </h2>
+
+                    <p>Desarrollador fullstack con 5 años de experiencia creando soluciones digitales innovadoras.
+                        Especializado en aplicaciones móviles y sistemas web empresariales, me apasiona transformar
+                        ideas en productos funcionales y atractivos.</p>
+                    <div class="habilidades">
+                        <span>JavaScript</span>
+                        <span>React Native</span>
+                        <span>Node.js</span>
+                        <span>UI/UX</span>
+                        <span>Flutter</span>
+                        <span>Laravel</span>
+                    </div>
+
+                </div>
+                <!-- Audio de "Sobre mí" -->
+                <audio id="audio-es" src="assets/audio.mp3"></audio>
+                <audio id="audio-en" src="assets/audio2.mp3"></audio>
+
+                <!-- Reproductor musical (agrega este atributo) -->
+                <audio id="player-audio" autoplay="true" data-default-volume="0.5">
+
+
+                </audio>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="filtros">
+            <button class="btn-filtro active" data-tecnologia="todas">Todas</button>
+            <button class="btn-filtro" data-tecnologia="react">React Native</button>
+            <button class="btn-filtro" data-tecnologia="flutter">Flutter</button>
+            <button class="btn-filtro" data-tecnologia="laravel">Laravel</button>
+            <button class="btn-filtro" data-tecnologia="node">Node.js</button>
+        </div>
+
+        <div class="proyectos-grid">
+            <!-- Proyecto 1 - App de Rastreo de Buses -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="App de Rastreo de Buses">
+                    <div class="mobile-frame"></div>
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">BusTracker App</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Flutter</span>
+                        <span class="tecnologia">Firebase</span>
+                        <span class="tecnologia">Google Maps API</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Aplicación móvil para rastreo de buses en tiempo real con mapa interactivo. Los usuarios pueden
+                        ver las rutas, paradas y tiempos estimados de llegada.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 - App de Citas Médicas -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="App de Citas Médicas">
+                    <div class="mobile-frame"></div>
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">MediSchedule</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">React Native</span>
+                        <span class="tecnologia">Node.js</span>
+                        <span class="tecnologia">MongoDB</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Plataforma de gestión de citas médicas con opciones de telemedicina. Incluye búsqueda de
+                        especialistas, historial médico y recordatorios automáticos.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 - Backoffice Empresarial -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                        alt="Sistema Backoffice">
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">Enterprise Dashboard</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Laravel</span>
+                        <span class="tecnologia">Vue.js</span>
+                        <span class="tecnologia">MySQL</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Sistema backoffice para gestión empresarial con módulos de CRM, contabilidad y RRHH. Panel de
+                        control con métricas en tiempo real y generación de reportes.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="music-player">
+        <div class="player-header">
+            <span>Playlist</span>
+            <button class="player-close-btn">&times;</button>
+        </div>
+        <div class="playlist">
+            <div class="track" data-src="assets/audio.mp3">
+                <span>1. Canción Inspiradora</span>
+                <button class="play-btn">▶</button>
+            </div>
+            <div class="track" data-src="assets/audio2.mp3">
+                <span>2. Música Relajante</span>
+                <button class="play-btn">▶</button>
+            </div>
+            <div class="track" data-src="assets/audio3.mp3">
+                <span>3. Tema Épico</span>
+                <button class="play-btn">▶</button>
+            </div>
+        </div>
+        <audio id="player-audio"></audio>
+    </div>
+    <footer>
+        <h2>¿Listo para trabajar juntos?</h2>
+        <p>Contáctame para nuevos proyectos y colaboraciones</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com/tu-usuario" class="facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/51987654321?text=Hola,%20estoy%20interesado%20en%20tu%20portafolio" class="whatsapp"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/tu-usuario" class="instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:tuemail@example.com" class="email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>© 2023 Portafolio Creativo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+
+
+        // Filtrado de proyectos
+        document.querySelectorAll('.btn-filtro').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const tecnologia = btn.dataset.tecnologia;
+                const proyectos = document.querySelectorAll('.proyecto');
+
+                proyectos.forEach(proyecto => {
+                    if (tecnologia === 'todas') {
+                        proyecto.style.display = 'block';
+                    } else {
+                        const tecnologias = Array.from(proyecto.querySelectorAll('.tecnologia'))
+                            .map(t => t.textContent.toLowerCase().replace('.', '').replace(' ', '-'));
+
+                        if (tecnologias.includes(tecnologia)) {
+                            proyecto.style.display = 'block';
+                        } else {
+                            proyecto.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // ===== [VARIABLES GLOBALES] =====
+        let currentLanguage = 'es';
+        let audioEnabled = false;
+        let currentAudioElement = null;
+
+        // ===== [INICIALIZACIÓN] =====
+        document.addEventListener('DOMContentLoaded', function () {
+            // Cargar preferencias
+            loadPreferences();
+
+            // Iniciar sistemas
+            initLanguageSystem();
+            initAudioSystem();
+            initDarkMode();
+            initParticles();
+            initLoadingScreen();
+
+            // Inicializar el audio correspondiente al idioma actual
+            currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
+        });
+
+        // ===== [SISTEMA DE IDIOMAS] =====
+        function initLanguageSystem() {
+            const languageButton = document.getElementById('toggle-language');
+            languageButton.addEventListener('click', toggleLanguage);
+            updateLanguageButton();
+        }
+
+        function toggleLanguage() {
+            // Pausar audio actual antes de cambiar
+            if (currentAudioElement) {
+                currentAudioElement.pause();
+                currentAudioElement.currentTime = 0;
+            }
+
+            // Cambiar idioma
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
+
+            // Actualizar interfaz
+            updateLanguageButton();
+            applyLanguage(currentLanguage);
+            saveLanguagePreference();
+
+            // Resetear estado del audio
+            audioEnabled = false;
+            updateAudioButton();
+        }
+
+        function updateLanguageButton() {
+            const languageButton = document.getElementById('toggle-language');
+            languageButton.innerHTML = `<i class="fas fa-language"></i> ${currentLanguage === 'es' ? 'EN' : 'ES'}`;
+            languageButton.dataset.lang = currentLanguage;
+        }
+
+        function applyLanguage(lang) {
+            const translations = {
+                es: {
+                    title: "Mi Portafolio Creativo",
+                    subtitle: "Diseño • Desarrollo • Innovación",
+                    greeting: "¡Hola, soy [Tu Nombre]!",
+                    bio: "Desarrollador fullstack con 5 años de experiencia creando soluciones digitales innovadoras..."
+                },
+                en: {
+                    title: "My Creative Portfolio",
+                    subtitle: "Design • Development • Innovation",
+                    greeting: "Hello, I'm [Your Name]!",
+                    bio: "Fullstack developer with 5 years of experience creating innovative digital solutions..."
+                }
+            };
+
+            document.querySelector('h1').textContent = translations[lang].title;
+            document.querySelector('h1').setAttribute('data-text', translations[lang].title);
+            document.querySelector('.subtitulo').textContent = translations[lang].subtitle;
+            document.getElementById('greeting-text').textContent = translations[lang].greeting;
+            document.querySelector('.bio p').textContent = translations[lang].bio;
+        }
+
+        // ===== [SISTEMA DE AUDIO] =====
+        function initAudioSystem() {
+            const speakerBtn = document.querySelector('.speaker-btn');
+            const resetBtn = document.querySelector('.reset-btn');
+
+            // Configurar eventos de audio
+            speakerBtn.addEventListener('click', toggleAudioPlayback);
+            resetBtn.addEventListener('click', resetAudio);
+
+            // Configurar eventos para cuando termina el audio
+            document.getElementById('audio-es').addEventListener('ended', handleAudioEnd);
+            document.getElementById('audio-en').addEventListener('ended', handleAudioEnd);
+        }
+        // ===== [CONTROL DE VOLÚMENES] =====
+        let musicVolume = 0.5; // Volumen normal del reproductor (50%)
+
+        function lowerMusicVolume() {
+            const musicPlayer = document.getElementById('player-audio');
+            musicVolume = musicPlayer.volume; // Guardar volumen actual
+            musicPlayer.volume = 0.2; // Bajar a 20%
+        }
+
+        function restoreMusicVolume() {
+            const musicPlayer = document.getElementById('player-audio');
+            musicPlayer.volume = musicVolume; // Restaurar volumen guardado
+        }
+        function toggleAudioPlayback() {
+            const aboutMeAudio = currentLanguage === 'es' ?
+                document.getElementById('audio-es') :
+                document.getElementById('audio-en');
+
+            if (aboutMeAudio.paused) {
+                // Al reproducir "Sobre mí":
+                aboutMeAudio.play()
+                    .then(() => {
+                        lowerMusicVolume(); // ¡Baja el volumen de la música!
+                        document.querySelector('.speaker-btn').innerHTML = '<i class="fas fa-pause"></i>';
+                    });
+            } else {
+                aboutMeAudio.pause();
+                restoreMusicVolume(); // Restaura el volumen musical
+                document.querySelector('.speaker-btn').innerHTML = '<i class="fas fa-volume-up"></i>';
+            }
+        }
+
+        function resetAudio() {
+            if (!currentAudioElement) return;
+
+            currentAudioElement.currentTime = 0;
+            if (!audioEnabled) {
+                currentAudioElement.play()
+                    .then(() => {
+                        audioEnabled = true;
+                        updateAudioButton();
+                    })
+                    .catch(error => {
+                        console.error("Error al reproducir audio:", error);
+                        audioEnabled = false;
+                        updateAudioButton();
+                    });
+            }
+            updateAudioButton();
+        }
+
+        function handleAudioEnd() {
+            audioEnabled = false;
+            updateAudioButton();
+        }
+
+        function updateAudioButton() {
+            const speakerBtn = document.querySelector('.speaker-btn');
+            speakerBtn.innerHTML = audioEnabled ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
+
+        // ===== [OTRAS FUNCIONALIDADES] =====
+        function initDarkMode() {
+            const darkModeToggle = document.getElementById('toggle-dark-mode');
+            darkModeToggle.addEventListener('click', toggleDarkMode);
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            document.getElementById('toggle-dark-mode').innerHTML = isDark ?
+                '<i class="fas fa-sun"></i>' :
+                '<i class="fas fa-moon"></i>';
+            localStorage.setItem('darkMode', isDark);
+        }
+
+        function initParticles() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.setProperty('--move-x', `${(Math.random() - 0.5) * 100}px`);
+                particle.style.setProperty('--move-y', `${(Math.random() - 0.5) * 100}px`);
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+
+                container.appendChild(particle);
+            }
+        }
+
+        function initLoadingScreen() {
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => loadingScreen.remove(), 1000);
+            }, 1500);
+        }
+
+        function loadPreferences() {
+            const savedLang = localStorage.getItem('portfolioLanguage');
+            if (savedLang) {
+                currentLanguage = savedLang;
+                applyLanguage(savedLang);
+            }
+        }
+
+        function saveLanguagePreference() {
+            localStorage.setItem('portfolioLanguage', currentLanguage);
+        }
+
+
+        // Reproductor de música
+        document.addEventListener('DOMContentLoaded', function () {
+            const player = document.getElementById('player-audio');
+            const tracks = document.querySelectorAll('.track');
+            const musicModal = document.getElementById('music-modal');
+            let currentTrackIndex = 0;
+            let isMusicPlaying = false;
+
+            // 1. Configurar primera canción (sin reproducir)
+            player.src = tracks[0].dataset.src;
+            updateTrackDisplay();
+
+            // 2. Mostrar modal de activación en CADA recarga
+            setTimeout(() => {
+                musicModal.classList.add('active');
+            }, 1000); // Mostrar después de 1 segundo
+
+            // 3. Control de botones del modal
+            document.getElementById('activate-music').addEventListener('click', function () {
+                playCurrentTrack();
+                musicModal.classList.remove('active');
+                // NO guardamos preferencia para que muestre en cada recarga
+            });
+
+            document.getElementById('decline-music').addEventListener('click', function () {
+                musicModal.classList.remove('active');
+                // Tampoco guardamos preferencia al declinar
+            });
+
+            document.querySelector('.close-modal').addEventListener('click', function () {
+                musicModal.classList.remove('active');
+            });
+
+
+            // 4. Funciones principales
+            function playCurrentTrack() {
+                player.play()
+                    .then(() => {
+                        isMusicPlaying = true;
+                        updateTrackDisplay();
+                    })
+                    .catch(error => {
+                        console.error("Error al reproducir:", error);
+                        // Mostrar instrucciones al usuario si es necesario
+                    });
+            }
+
+            function updateTrackDisplay() {
+                tracks.forEach((track, index) => {
+                    const btn = track.querySelector('.play-btn');
+                    if (index === currentTrackIndex && isMusicPlaying) {
+                        btn.textContent = '❚❚';
+                        track.classList.add('active');
+                    } else {
+                        btn.textContent = '▶';
+                        track.classList.remove('active');
+                    }
+                });
+            }
+
+            // 5. Control manual de canciones
+            tracks.forEach((track, index) => {
+                track.querySelector('.play-btn').addEventListener('click', function () {
+                    if (currentTrackIndex === index) {
+                        // Misma canción - toggle play/pause
+                        if (player.paused) {
+                            playCurrentTrack();
+                        } else {
+                            player.pause();
+                            isMusicPlaying = false;
+                            updateTrackDisplay();
+                        }
+                    } else {
+                        // Nueva canción
+                        currentTrackIndex = index;
+                        player.src = tracks[index].dataset.src;
+                        playCurrentTrack();
+                    }
+                });
+            });
+
+            // 6. Cambio automático al terminar canción
+            player.addEventListener('ended', function () {
+                currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+                player.src = tracks[currentTrackIndex].dataset.src;
+                playCurrentTrack();
+            });
+
+            // 7. Si ya estaba activado, intentar reproducción
+            if (localStorage.getItem('musicEnabled') === 'true') {
+                playCurrentTrack();
+            }
+            // const player2 = document.querySelector('.music-player');
+
+            // // Control para móviles (touch)
+            // let touchStartX = 0;
+            // let touchEndX = 0;
+
+            // player2.addEventListener('touchstart', function (e) {
+            //     touchStartX = e.changedTouches[0].screenX;
+            // }, { passive: true });
+
+            // player2.addEventListener('touchend', function (e) {
+            //     touchEndX = e.changedTouches[0].screenX;
+            //     handleSwipe();
+            // }, { passive: true });
+
+            // function handleSwipe() {
+            //     // Swipe izquierda (mostrar)
+            //     if (touchStartX - touchEndX > 50) {
+            //         player2.classList.add('active-mobile');
+            //     }
+            //     // Swipe derecha (ocultar)
+            //     else if (touchEndX - touchStartX > 50) {
+            //         player2.classList.remove('active-mobile');
+            //     }
+            // }
+
+            // // Alternar con click/tap en el borde visible
+            // player2.addEventListener('click', function (e) {
+            //     if (!player2.classList.contains('active-mobile') &&
+            //         e.clientX > player2.getBoundingClientRect().left + player2.offsetWidth - 30) {
+            //         player2.classList.add('active-mobile');
+            //         console.log("aqui")
+            //     }
+            // });
+
+            // // Cerrar al tocar fuera
+            // document.addEventListener('click', function (e) {
+            //     if (!player2.contains(e.target)) {
+            //         player2.classList.remove('active-mobile');
+            //     }
+            // });
+
+            // Función para alternar visibilidad del reproductor
+
+        });
+
+
+
+
+function toggleMusicPlayer(show) {
+    const player = document.querySelector('.music-player');
+    player.style.transform = show ? 'translateX(0)' : 'translateX(200px)';
+}
+
+// Cerrar al hacer clic fuera
+document.addEventListener('click', function(e) {
+    const player = document.querySelector('.music-player');
+    if (!player.contains(e.target) && e.target !== document.querySelector('.player-close-btn')) {
+        toggleMusicPlayer(false);
+    }
+});
+
+// Cerrar con el botón X
+document.querySelector('.player-close-btn').addEventListener('click', function() {
+    toggleMusicPlayer(false);
+});
+
+// Mostrar al hacer hover (opcional)
+document.querySelector('.music-player').addEventListener('mouseenter', function() {
+    toggleMusicPlayer(true);
+});
+
+document.querySelector('.music-player').addEventListener('mouseleave', function() {
+    toggleMusicPlayer(false);
+});
+  // Mostrar al hacer hover (opcional)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Creativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --color-fondo: #F7FFF7;
+            --color-oscuro: #292F36;
+            --color-acento: #FFE66D;
+            --color-texto: #333;
+            --color-texto-claro: #f8f8f8;
+        }
+        
+        /* Modo oscuro */
+        body.dark-mode {
+            --color-fondo: #121212;
+            --color-oscuro: #e0e0e0;
+            --color-texto: #f8f8f8;
+            --color-texto-claro: #f8f8f8;
+            --color-acento: #FFD700; /* Cambiamos a dorado en modo oscuro */
+        }
+        
+        /* Efecto de partículas */
+        @keyframes particle-move {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--move-x), var(--move-y)); opacity: 0; }
+        }
+        
+        /* Animación título */
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+            50% { text-shadow: 0 0 20px var(--color-acento), 0 0 30px rgba(255,255,255,0.6); }
+            100% { text-shadow: 0 0 10px rgba(255,255,255,0.8); }
+        }
+        
+        /* Animación gradiente */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Efecto de onda */
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-2deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        /* Pantalla de carga */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.3s ease;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        header {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario), var(--color-primario));
+            background-size: 300% 300%;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem; /* Reducido para subir la sección sobre mí */
+            overflow: hidden;
+            animation: 
+                gradient-shift 8s ease infinite,
+                wave 8s ease-in-out infinite;
+        }
+        
+        /* Partículas */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 20%);
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-move 3s linear infinite;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: title-glow 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: transparent;
+            background: linear-gradient(45deg, white, var(--color-acento), white);
+            background-clip: text;
+            -webkit-background-clip: text;
+            z-index: -1;
+            transform: translateZ(-30px);
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+        
+        .subtitulo {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        .subtitulo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: white;
+            animation: 
+                expand 2s ease infinite,
+                pulse-opacity 2s ease infinite;
+        }
+        
+        @keyframes expand {
+            0% { width: 50px; }
+            50% { width: 100px; }
+            100% { width: 50px; }
+        }
+        
+        @keyframes pulse-opacity {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        /* Efecto de cursor brillante */
+        .cursor-effect {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Sección Sobre Mí */
+        .sobre-mi {
+            background-color: white;
+            padding: 4rem 0;
+            margin: -3rem auto 3rem auto; /* Subimos la sección */
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        body.dark-mode .sobre-mi {
+            background: #1e1e1e;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .perfil {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .foto-perfil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .foto-perfil:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--color-primario);
+        }
+        
+        .bio {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .habilidades {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .habilidades span {
+            background-color: var(--color-acento);
+            color: var(--color-oscuro); /* Texto oscuro para mejor contraste */
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .habilidades span:hover {
+            background-color: var(--color-primario);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Filtros */
+        .filtros {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn-filtro {
+            background: none;
+            border: 2px solid var(--color-secundario);
+            color: var(--color-texto);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .btn-filtro.active, .btn-filtro:hover {
+            background-color: var(--color-secundario);
+            color: white;
+        }
+        
+        body.dark-mode .btn-filtro {
+            border-color: var(--color-primario);
+        }
+        
+        body.dark-mode .btn-filtro.active, 
+        body.dark-mode .btn-filtro:hover {
+            background-color: var(--color-primario);
+        }
+        
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .proyecto {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            animation: fadeIn 1s ease-in;
+            animation-fill-mode: both;
+        }
+        
+        body.dark-mode .proyecto {
+            background: #1e1e1e;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .proyecto:nth-child(1) { animation-delay: 0.3s; }
+        .proyecto:nth-child(2) { animation-delay: 0.6s; }
+        .proyecto:nth-child(3) { animation-delay: 0.9s; }
+        
+        .proyecto:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .proyecto-imagen {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .proyecto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .proyecto:hover .proyecto-imagen img {
+            transform: scale(1.1) rotate(2deg);
+        }
+        
+        .proyecto-contenido {
+            padding: 1.5rem;
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .proyecto:hover .proyecto-contenido {
+            transform: translateY(-5px);
+        }
+        
+        .proyecto-titulo {
+            color: var(--color-primario);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .proyecto:hover .proyecto-titulo {
+            color: var(--color-secundario);
+        }
+        
+        .proyecto-tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tecnologia {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .proyecto:hover .tecnologia {
+            background-color: var(--color-primario);
+            transform: translateY(-2px);
+        }
+        
+        .proyecto-descripcion {
+            color: #555;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .proyecto-descripcion {
+            color: #b0b0b0;
+        }
+        
+        .proyecto:hover .proyecto-descripcion {
+            color: var(--color-texto);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::after {
+            left: 100%;
+        }
+        
+        footer {
+            background-color: var(--color-oscuro);
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        body.dark-mode footer {
+            background-color: #1a1a1a;
+        }
+        
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .redes-sociales a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .redes-sociales a:nth-child(1) { animation-delay: 0s; }
+        .redes-sociales a:nth-child(2) { animation-delay: 0.2s; }
+        .redes-sociales a:nth-child(3) { animation-delay: 0.4s; }
+        
+        /* WhatsApp */
+        .redes-sociales a.whatsapp {
+            background-color: #25D366;
+        }
+        
+        /* Facebook */
+        .redes-sociales a.facebook {
+            background-color: #3b5998;
+        }
+        
+        /* Instagram */
+        .redes-sociales a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+        }
+        
+        /* Email */
+        .redes-sociales a.email {
+            background-color: #D44638;
+        }
+        
+        .redes-sociales a:hover {
+            transform: translateY(-5px) scale(1.1);
+            animation: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Botón modo oscuro */
+        .btn-dark-mode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        body.dark-mode .btn-dark-mode {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .btn-dark-mode:hover {
+            background: rgba(0,0,0,0.5);
+            transform: rotate(30deg) scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitulo {
+                font-size: 1.2rem;
+            }
+            
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .habilidades {
+                justify-content: center;
+            }
+            
+            .sobre-mi {
+                margin-top: -2rem;
+                padding: 2rem 1rem;
+            }
+            
+            /* Simplificar animaciones en móviles */
+            .proyecto, header, .container, footer {
+                animation: none;
+            }
+            
+            header {
+                animation: gradient-shift 8s ease infinite;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p style="color: white; margin-top: 20px;">Cargando portafolio...</p>
+    </div>
+    
+    <header>
+        <button id="toggle-dark-mode" class="btn-dark-mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        <h1 data-text="Mi Portafolio Creativo">Mi Portafolio Creativo</h1>
+        <p class="subtitulo">Diseño • Desarrollo • Innovación</p>
+        <div id="particles-container"></div>
+    </header>
+    
+    <section class="sobre-mi">
+        <div class="container">
+            <div class="perfil">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Tu foto" class="foto-perfil">
+                <div class="bio">
+                    <h2>¡Hola, soy [Tu Nombre]!</h2>
+                    <p>Desarrollador fullstack con 5 años de experiencia creando soluciones digitales innovadoras. Especializado en aplicaciones móviles y sistemas web empresariales, me apasiona transformar ideas en productos funcionales y atractivos.</p>
+                    <div class="habilidades">
+                        <span>JavaScript</span>
+                        <span>React Native</span>
+                        <span>Node.js</span>
+                        <span>UI/UX</span>
+                        <span>Flutter</span>
+                        <span>Laravel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="filtros">
+            <button class="btn-filtro active" data-tecnologia="todas">Todas</button>
+            <button class="btn-filtro" data-tecnologia="react">React Native</button>
+            <button class="btn-filtro" data-tecnologia="flutter">Flutter</button>
+            <button class="btn-filtro" data-tecnologia="laravel">Laravel</button>
+            <button class="btn-filtro" data-tecnologia="node">Node.js</button>
+        </div>
+        
+        <div class="proyectos-grid">
+            <!-- Proyecto 1 - App de Rastreo de Buses -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1508&q=80" alt="App de Rastreo de Buses">
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">BusTracker App</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Flutter</span>
+                        <span class="tecnologia">Firebase</span>
+                        <span class="tecnologia">Google Maps API</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Aplicación móvil para rastreo de buses en tiempo real, con estimación de llegada y notificaciones. Permite a los usuarios planificar sus viajes y evitar tiempos de espera innecesarios.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+            
+            <!-- Proyecto 2 - App de Citas Médicas -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="App de Citas Médicas">
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">MediSchedule</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">React Native</span>
+                        <span class="tecnologia">Node.js</span>
+                        <span class="tecnologia">MongoDB</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Plataforma de gestión de citas médicas con opciones de telemedicina. Incluye búsqueda de especialistas, historial médico y recordatorios automáticos.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+            
+            <!-- Proyecto 3 - Backoffice Empresarial -->
+            <div class="proyecto">
+                <div class="proyecto-imagen">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sistema Backoffice">
+                </div>
+                <div class="proyecto-contenido">
+                    <h3 class="proyecto-titulo">Enterprise Dashboard</h3>
+                    <div class="proyecto-tecnologias">
+                        <span class="tecnologia">Laravel</span>
+                        <span class="tecnologia">Vue.js</span>
+                        <span class="tecnologia">MySQL</span>
+                    </div>
+                    <p class="proyecto-descripcion">
+                        Sistema backoffice para gestión empresarial con módulos de CRM, contabilidad y RRHH. Panel de control con métricas en tiempo real y generación de reportes.
+                    </p>
+                    <a href="detalle-proyecto.html" class="btn">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <h2>¿Listo para trabajar juntos?</h2>
+        <p>Contáctame para nuevos proyectos y colaboraciones</p>
+        <div class="redes-sociales">
+            <a href="https://facebook.com/tu-usuario" class="facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/51987654321?text=Hola,%20estoy%20interesado%20en%20tu%20portafolio" class="whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://instagram.com/tu-usuario" class="instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:tuemail@example.com" class="email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>© 2023 Portafolio Creativo. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Crear partículas dinámicas
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const header = document.querySelector('header');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                particle.style.setProperty('--move-x', `${(Math.random() - 0.5) * 100}px`);
+                particle.style.setProperty('--move-y', `${(Math.random() - 0.5) * 100}px`);
+                
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Efecto de cursor brillante
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor-effect');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.classList.add('cursor-effect');
+                document.body.appendChild(newCursor);
+            } else {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            }
+        });
+        
+        // Filtrado de proyectos
+        document.querySelectorAll('.btn-filtro').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const tecnologia = btn.dataset.tecnologia;
+                const proyectos = document.querySelectorAll('.proyecto');
+                
+                proyectos.forEach(proyecto => {
+                    if (tecnologia === 'todas') {
+                        proyecto.style.display = 'block';
+                    } else {
+                        const tecnologias = Array.from(proyecto.querySelectorAll('.tecnologia'))
+                            .map(t => t.textContent.toLowerCase().replace('.', '').replace(' ', '-'));
+                        
+                        if (tecnologias.includes(tecnologia)) {
+                            proyecto.style.display = 'block';
+                        } else {
+                            proyecto.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Modo oscuro - Iniciar siempre en modo claro
+        const darkModeToggle = document.getElementById('toggle-dark-mode');
+        
+        // Alternar modo oscuro
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Guardar preferencia
+            localStorage.setItem('darkMode', isDark);
+        });
+        
+        // Cargar preferencia guardada (pero no aplicar al inicio)
+        if (localStorage.getItem('darkMode') === 'true') {
+            // No aplicamos automáticamente, pero configuramos el botón
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Efecto parallax en imágenes de proyectos
+        window.addEventListener('scroll', () => {
+            const proyectos = document.querySelectorAll('.proyecto-imagen img');
+            const scrollY = window.scrollY;
+            
+            proyectos.forEach(img => {
+                const speed = 0.1;
+                const offset = scrollY * speed;
+                img.style.transform = `translateY(${offset}px) scale(1.1)`;
+            });
+        });
+        
+        // Iniciar efectos cuando la página esté cargada
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            // Ocultar pantalla de carga
+            setTimeout(() => {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => loadingScreen.remove(), 1000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
