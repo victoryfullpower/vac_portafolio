@@ -1,0 +1,3653 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Creativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Meta tags existentes... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Creativo</title>
+
+    <!-- Añade estos nuevos meta tags para compartir en redes sociales -->
+    <meta property="og:title" content="Portafolio de Victor Arias - Desarrollador Frontend">
+    <meta property="og:description"
+        content="Desarrollador Frontend especializado en Flutter, Angular, Ionic y React Native. Explora mis proyectos y experiencia profesional.">
+    <meta property="og:url" content="https://victoryfullpower.github.io/vac_portafolio/">
+    <!-- Cambia esto por tu URL real -->
+    <meta property="og:image" content="https://victoryfullpower.github.io/vac_portafolio/assets/images/perfil.jpg">
+    <!-- URL absoluta de tu imagen -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Portafolio Victor Arias">
+
+    <!-- Para Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portafolio de Victor Arias - Desarrollador Frontend">
+    <meta name="twitter:description"
+        content="Desarrollador Frontend con experiencia en aplicaciones web y móviles. ¡Conoce mi trabajo!">
+    <meta name="twitter:image" content="https://victoryfullpower.github.io/vac_portafolio/assets/images/perfil.jpg">
+
+    <!-- Resto de tus meta tags y enlaces... -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        :root {
+            --color-primario: #FF6B6B;
+            --color-secundario: #4ECDC4;
+            --color-fondo: #F7FFF7;
+            --color-oscuro: #292F36;
+            --color-acento: #FFE66D;
+            --color-texto: #333;
+            --color-texto-claro: #f8f8f8;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            --color-fondo: #121212;
+            --color-oscuro: #e0e0e0;
+            --color-texto: #f8f8f8;
+            --color-texto-claro: #f8f8f8;
+            --color-acento: #FFA500;
+        }
+
+        /* Efecto de partículas */
+        @keyframes particle-move {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--move-x), var(--move-y));
+                opacity: 0;
+            }
+        }
+
+        /* Animación título */
+        @keyframes title-glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+
+            50% {
+                text-shadow: 0 0 20px var(--color-acento), 0 0 30px rgba(255, 255, 255, 0.6);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Animación gradiente */
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Efecto de onda */
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(2deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(-2deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Pantalla de carga */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Nueva animación para proyectos */
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.3s ease;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario), var(--color-primario));
+            background-size: 300% 300%;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            animation:
+                gradient-shift 8s ease infinite,
+                wave 8s ease-in-out infinite;
+        }
+
+        /* Partículas */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 0%, transparent 20%);
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-move 3s linear infinite;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            animation: title-glow 3s ease-in-out infinite;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: transparent;
+            background: linear-gradient(45deg, white, var(--color-acento), white);
+            background-clip: text;
+            -webkit-background-clip: text;
+            z-index: -1;
+            transform: translateZ(-30px);
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+
+        .subtitulo {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .subtitulo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: white;
+            animation:
+                expand 2s ease infinite,
+                pulse-opacity 2s ease infinite;
+        }
+
+        @keyframes expand {
+            0% {
+                width: 50px;
+            }
+
+            50% {
+                width: 100px;
+            }
+
+            100% {
+                width: 50px;
+            }
+        }
+
+        @keyframes pulse-opacity {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Efecto de cursor brillante */
+        .cursor-effect {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sección Sobre Mí */
+        .sobre-mi {
+            background-color: white;
+            padding: 4rem 0;
+            margin: -3rem auto 3rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        body.dark-mode .sobre-mi {
+            background: #1e1e1e;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .perfil {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .foto-perfil {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .foto-perfil:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--color-primario);
+        }
+
+        .bio {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .habilidades {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .habilidades span {
+            background-color: var(--color-acento);
+            color: var(--color-oscuro);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .habilidades span {
+            color: #121212;
+        }
+
+        .habilidades span:hover {
+            background-color: var(--color-primario);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Filtros */
+        .filtros {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-filtro {
+            background: none;
+            border: 2px solid var(--color-secundario);
+            color: var(--color-texto);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-filtro.active,
+        .btn-filtro:hover {
+            background-color: var(--color-secundario);
+            color: white;
+        }
+
+        body.dark-mode .btn-filtro {
+            border-color: var(--color-primario);
+        }
+
+        body.dark-mode .btn-filtro.active,
+        body.dark-mode .btn-filtro:hover {
+            background-color: var(--color-primario);
+        }
+
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .proyecto {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            animation: slideIn 0.8s forwards;
+        }
+
+        .proyecto:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .proyecto:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .proyecto:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        body.dark-mode .proyecto {
+            background: #1e1e1e;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .proyecto:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .proyecto-imagen {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proyecto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        .proyecto:hover .proyecto-imagen img {
+            transform: scale(1.1);
+        }
+
+        /* Efecto de dispositivo móvil */
+        .mobile-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><rect x="5" y="5" width="90" height="90" rx="10" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/></svg>') no-repeat center center;
+            pointer-events: none;
+        }
+
+        .proyecto-contenido {
+            padding: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .proyecto:hover .proyecto-contenido {
+            transform: translateY(-5px);
+        }
+
+        .proyecto-titulo {
+            color: var(--color-primario);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .proyecto:hover .proyecto-titulo {
+            color: var(--color-secundario);
+        }
+
+        .proyecto-tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tecnologia {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .proyecto:hover .tecnologia {
+            background-color: var(--color-primario);
+            transform: translateY(-2px);
+        }
+
+        .proyecto-descripcion {
+            color: #555;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .proyecto-descripcion {
+            color: #b0b0b0;
+        }
+
+        .proyecto:hover .proyecto-descripcion {
+            color: var(--color-texto);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primario);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background-color: var(--color-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .redes-sociales a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .redes-sociales a:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .redes-sociales a:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .redes-sociales a:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* WhatsApp */
+        .redes-sociales a.whatsapp {
+            background-color: #25D366;
+        }
+
+        /* Facebook */
+        .redes-sociales a.facebook {
+            background-color: #3b5998;
+        }
+
+        /* Instagram */
+        .redes-sociales a.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+        }
+
+        /* Email */
+        .redes-sociales a.email {
+            background-color: #D44638;
+        }
+
+        .redes-sociales a:hover {
+            transform: translateY(-5px) scale(1.1);
+            animation: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Botón modo oscuro */
+        .btn-dark-mode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        body.dark-mode .btn-dark-mode {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-dark-mode:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: rotate(30deg) scale(1.1);
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, #292F36, #1a1a1a, #292F36);
+        }
+
+        body.dark-mode .btn-language,
+        body.dark-mode .btn-cv-download {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--color-acento);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .btn-language:hover,
+        body.dark-mode .btn-cv-download:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        /* Botones de idioma y CV */
+        .btn-header-control.active {
+            background: var(--color-primario) !important;
+            color: white !important;
+        }
+
+        .language-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .btn-language {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-language:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .cv-downloads {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cv-download {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cv-download:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        body.dark-mode .btn-language,
+        body.dark-mode .btn-cv-download {
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--color-acento);
+            border: 1px solid var(--color-acento);
+        }
+
+        body.dark-mode .btn-language:hover,
+        body.dark-mode .btn-cv-download:hover {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitulo {
+                font-size: 1.2rem;
+            }
+
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .habilidades {
+                justify-content: center;
+            }
+
+            .sobre-mi {
+                margin-top: -2rem;
+                padding: 2rem 1rem;
+            }
+
+            /* Simplificar animaciones en móviles */
+            .proyecto,
+            header,
+            footer {
+                animation: none !important;
+            }
+
+            header {
+                animation: gradient-shift 8s ease infinite !important;
+            }
+
+            .proyecto {
+                opacity: 1 !important;
+                animation: none !important;
+            }
+
+            .language-buttons {
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cv-downloads {
+                flex-direction: column;
+            }
+        }
+
+        /* Controles izquierdos - Versión compacta horizontal */
+        .header-left-controls {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .btn-header-control {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-header-control:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .btn-header-control {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-acento);
+        }
+
+        body.dark-mode .btn-header-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Controles del header - Versión solo texto */
+        .header-left-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 100;
+            max-width: 80%;
+        }
+
+        .btn-header-control {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .btn-header-control {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--color-acento);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile: Ajuste de tamaño */
+        @media (max-width: 768px) {
+            .header-left-controls {
+                top: 15px;
+                left: 10px;
+                gap: 5px;
+            }
+
+            .btn-header-control {
+                padding: 6px 10px;
+                font-size: 13px;
+            }
+
+            @media (max-width: 768px) {
+                header {
+                    animation:
+                        gradient-shift 8s ease infinite,
+                        mobile-wave 10s ease-in-out infinite !important;
+                }
+
+                @keyframes mobile-wave {
+
+                    0%,
+                    100% {
+                        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+                    }
+
+                    50% {
+                        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 95%);
+                    }
+                }
+
+                header::before {
+                    animation: particle-mobile 15s linear infinite;
+                }
+
+                @keyframes particle-mobile {
+                    0% {
+                        background-position: 0 0;
+                    }
+
+                    100% {
+                        background-position: 100% 100%;
+                    }
+                }
+            }
+        }
+
+        /* Pantallas muy pequeñas */
+        @media (max-width: 400px) {
+            .btn-header-control {
+                padding: 5px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Estilos para el botón de audio integrado */
+        /* Controles inline */
+        .audio-controls {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Botón Parlante (verde) */
+        .speaker-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .speaker-btn:hover {
+            transform: scale(1.1);
+            background: #27ae60;
+        }
+
+        /* Botón Reinicio (gris) */
+        .reset-btn {
+            background: #f1f1f1;
+            color: #555;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .speaker-btn {
+            background: #27ae60;
+        }
+
+        body.dark-mode .reset-btn {
+            background: #555;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .reset-btn:hover {
+            background: #444;
+        }
+
+        /* Estilos del reproductor */
+        .music-player {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateX(200px);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-player:hover {
+            transform: translateX(0);
+        }
+
+        .player-header {
+            padding: 10px;
+            background: var(--color-primario);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .playlist {
+            padding: 10px;
+        }
+
+        .play-btn {
+            background: var(--color-secundario);
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .track span {
+            flex-grow: 1;
+            text-align: left;
+            padding-right: 10px;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+        }
+
+        .player-close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .music-player {
+            background: rgba(40, 40, 40, 0.9);
+            color: white;
+        }
+
+        body.dark-mode .track {
+            border-bottom: 1px solid #444;
+        }
+
+        /* Estilo para la canción actual */
+        .track.active {
+            background: rgba(78, 205, 196, 0.15);
+            border-left: 3px solid var(--color-secundario);
+        }
+
+        /* Estilos para la SPA */
+        main,
+        #project-detail {
+            transition: all 0.4s ease;
+        }
+
+        #project-detail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-fondo);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 0;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+
+        #project-detail.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            display: block;
+        }
+
+        .project-detail .container {
+            max-width: 900px;
+        }
+
+        .project-detail-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .project-detail-content {
+            background: #1e1e1e;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-detail-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .project-detail h2 {
+            color: var(--color-primario);
+            margin-top: 0;
+        }
+
+        .project-detail-technologies {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .project-detail-description {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .project-features {
+            margin: 2rem 0;
+        }
+
+        .project-features h3 {
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+
+        .project-features ul {
+            padding-left: 1.5rem;
+        }
+
+        .project-features li {
+            margin-bottom: 0.5rem;
+        }
+
+
+        .project-challenge {
+            margin: 2rem 0;
+        }
+
+        .project-challenge h3 {
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+
+        .project-challenge ul {
+            padding-left: 1.5rem;
+        }
+
+        .project-challenge li {
+            margin-bottom: 0.5rem;
+        }
+
+
+
+        .project-solution {
+            margin: 2rem 0;
+        }
+
+        .project-solution h3 {
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+
+        .project-solution ul {
+            padding-left: 1.5rem;
+        }
+
+        .project-solution li {
+            margin-bottom: 0.5rem;
+        }
+
+
+
+        .media-section {
+            margin: 2rem 0;
+        }
+
+        .media-section h3 {
+            color: var(--color-secundario);
+            margin-bottom: 1rem;
+        }
+
+        .media-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .media-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-image {
+                height: 250px;
+            }
+
+            .project-detail-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Estilos del modal permiso audio*/
+        .music-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .music-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .music-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .track-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+        }
+
+        .music-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .modal-footer {
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--color-primario);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-oscuro);
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode .modal-content {
+            background: #2d2d2d;
+            color: white;
+        }
+
+        body.dark-mode .modal-body {
+            color: #eee;
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #3d3d3d;
+            color: #eee;
+        }
+
+        body.dark-mode .track-preview {
+            background: rgba(78, 205, 196, 0.2);
+        }
+
+        /* Estilos para la card de información del proyecto */
+        .project-info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        body.dark-mode .project-info-card {
+            background: #1e1e1e;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--color-secundario);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Estilos para la galería multimedia */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16/9;
+        }
+
+        .media-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover .media-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .media-type {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Estilos para el modal de multimedia */
+
+
+
+
+        #media-iframe,
+        #media-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #media-image {
+            object-fit: contain;
+            background: #000;
+        }
+
+        @media (max-width: 768px) {
+            .project-info-card {
+                grid-template-columns: 1fr;
+            }
+
+            .media-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .media-modal-content {
+                width: 95%;
+            }
+        }
+
+
+        /* ===== [ESTILOS MEJORADOS PARA SECCIÓN "SOBRE MÍ"] ===== */
+
+
+        /* Media Queries específicas para iPhone */
+        @supports (-webkit-touch-callout: none) {
+            .sobre-mi {
+                -webkit-overflow-scrolling: touch;
+                /* Mejora scroll en iOS */
+                margin: -3rem auto 3rem auto;
+            }
+
+            .perfil {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .bio {
+                text-align: center;
+                padding: 0 10px;
+            }
+        }
+
+        /* Media Queries para móviles en general */
+        @media (max-width: 768px) {
+            .sobre-mi {
+                margin-top: -2rem;
+                padding: 2rem 0;
+                width: calc(100% - 30px);
+                /* Más estrecho en móviles */
+            }
+
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .foto-perfil {
+                width: 180px;
+                height: 180px;
+            }
+
+            .habilidades {
+                justify-content: center;
+            }
+
+            .bio {
+                min-width: 100%;
+            }
+        }
+
+        /* Ajustes específicos para Safari */
+        @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance:none) {
+                .sobre-mi {
+                    transform: translateX(-50%) translateZ(0);
+                    /* Acelera hardware */
+                }
+            }
+        }
+
+        /* Estilos mejorados para el modal de imágenes */
+        .media-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .media-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .media-modal-content {
+            position: relative;
+            width: 95%;
+            height: 95%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .close-media-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .media-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #media-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            background: #000;
+            border-radius: 5px;
+        }
+
+        /* Ajustes para mobile */
+        @media (max-width: 768px) {
+            .media-modal-content {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+            }
+
+            .close-media-modal {
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+            }
+
+            #media-image {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+        }
+
+        /* Ajustes para pantallas muy altas */
+        @media (min-height: 800px) {
+            #media-image {
+                max-height: 90vh;
+            }
+        }
+
+        /* Ajustes para orientación horizontal en móviles */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #media-image {
+                max-height: 90vh;
+            }
+        }
+
+        /* LinkedIn */
+        .redes-sociales a.linkedin {
+            background-color: #0077B5;
+        }
+
+        .track-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+        }
+
+        .music-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-secundario);
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .media-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .media-container:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--color-primario);
+        }
+
+        .foto-perfil,
+        .video-perfil {
+            position: absolute;
+            top: 0;
+            left: 4;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-perfil {
+            opacity: 0;
+            width: 60%;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .video-perfil.active {
+            opacity: 1;
+        }
+
+        /* Nuevos estilos para el modal de multimedia */
+        .modal-media-container {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            max-height: 80vh;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .modal-media-container iframe,
+        .modal-media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Mantén los estilos originales solo para la foto de perfil */
+        .media-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        /* Estilos para el visualizador de audio */
+        .audio-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 30px;
+            gap: 3px;
+            margin-left: 10px;
+        }
+
+        .audio-bar {
+            width: 3px;
+            background-color: var(--color-secundario);
+            border-radius: 3px;
+            transition: height 0.1s ease;
+        }
+
+        .music-player .audio-visualizer {
+            width: 100%;
+            justify-content: center;
+            margin: 10px 0;
+            height: 40px;
+        }
+
+        .music-player .audio-bar {
+            width: 4px;
+            background-color: white;
+        }
+
+        /* Estilos mejorados para el visualizador de audio */
+        .audio-visualizer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .speaker {
+            width: 60px;
+            height: 100px;
+            position: relative;
+            margin: 0 15px;
+            transition: transform 0.05s ease-out;
+        }
+
+        .speaker-left {
+            transform: rotateY(180deg);
+        }
+
+        .speaker-body {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-cone {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #444, #222);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+        }
+
+        /* Efecto de "retumbo" (se activa con JavaScript) */
+        .speaker-rumble {
+            animation: rumble 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .speaker-grill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 10px 10px;
+            z-index: 1;
+        }
+
+        .speaker-base {
+            width: 80%;
+            height: 10px;
+            background: #333;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+
+        .audio-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 100px;
+            gap: 4px;
+            margin: 0 10px;
+        }
+
+        .audio-bar {
+            width: 4px;
+            background-color: var(--color-secundario);
+            border-radius: 3px;
+            transition: height 0.1s ease;
+        }
+
+        /* Efectos psicodélicos */
+        @keyframes colorShift {
+            0% {
+                filter: hue-rotate(0deg) brightness(1);
+            }
+
+            50% {
+                filter: hue-rotate(180deg) brightness(1.2);
+            }
+
+            100% {
+                filter: hue-rotate(360deg) brightness(1);
+            }
+        }
+
+        .speaker-psycho {
+            animation: colorShift 5s infinite linear;
+        }
+
+        .pulse-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, currentColor, transparent 70%);
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .pulse-active {
+            animation: pulse 0.5s ease-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Estilos para el reproductor de video */
+.video-player {
+    position: fixed;
+    bottom: 100px;
+    right: 280px;
+    width: 320px;
+    height: 180px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.video-player.hidden {
+    transform: translateY(200px);
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-toggle-btn {
+    position: fixed;
+    bottom: 290px;
+    right: 280px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.video-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+body.dark-mode .video-toggle-btn {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .video-player {
+        right: 20px;
+        bottom: 180px;
+        width: 200px;
+        height: 120px;
+    }
+    
+    .video-toggle-btn {
+        right: 20px;
+        bottom: 310px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div id="music-modal" class="music-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎵 Experiencia Musical</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Deseas disfrutar de música de fondo mientras exploras el portafolio?</p>
+                <div class="track-preview">
+                    <i class="fas fa-headphones music-icon" style="font-size: 2rem; color: white;"></i>
+                    <span>Playlist de ambiente</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="decline-music">Ahora no</button>
+                <button class="btn-primary" id="activate-music">¡Activar música!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p style="color: white; margin-top: 20px;">Cargando portafolio...</p>
+    </div>
+
+    <header>
+        <button id="toggle-dark-mode" class="btn-dark-mode">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div class="header-left-controls">
+            <button id="toggle-language" class="btn-header-control" data-lang="es">
+                <i class="fas fa-language"></i> EN
+            </button>
+            <a href="assets/cv/EsCv_VictorArias.pdf" id="download-cv-es" class="btn-header-control" download>
+                CV Español
+            </a>
+            <a href="assets/cv/EnCv_VictorArias.pdf" id="download-cv-en" class="btn-header-control" download>
+                CV English
+            </a>
+        </div>
+
+        <h1 data-text="Mi Portafolio Creativo">Mi Portafolio Creativo</h1>
+        <p class="subtitulo">Diseño • Desarrollo • Innovación</p>
+        <div id="particles-container"></div>
+    </header>
+
+    <main id="main-content">
+        <section class="sobre-mi">
+            <div class="container">
+                <div class="perfil">
+                    <div class="media-container">
+                        <img src="assets/images/perfil.jpg" alt="Tu foto" class="foto-perfil">
+                        <video class="video-perfil" loop muted playsinline>
+                            <source src="assets/videos/segundo_video.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                    </div>
+
+                    <div class="bio">
+                        <h2>
+                            <span id="greeting-text">¡Hola, soy victor!</span>
+                            <div class="audio-controls">
+                                <button class="speaker-btn" title="Reproducir/Pausar">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button class="reset-btn" title="Reiniciar audio">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                        </h2>
+                        <p id="bio1">Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones
+                            web y móviles dinámicas.</p>
+                        <p id="bio2">A través de este portafolio, quiero compartir mis habilidades y mis capacidades
+                            para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo
+                            que podriamos crear juntos.</p>
+                        <p id="bio3">Sin mas, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o
+                            simplemente compartir ideas!</p>
+                        <div class="habilidades">
+                            <span>JavaScript</span>
+                            <span>React Native</span>
+                            <span>Node</span>
+                            <span>Ionic</span>
+                            <span>Capacitor</span>
+                            <span>Flutter</span>
+                            <span>Angular</span>
+                            <span>Stencil</span>
+                        </div>
+                    </div>
+                    <audio id="audio-es" src="assets/audios_sobremi/audio_spanish.mp3"></audio>
+                    <audio id="audio-en" src="assets/audios_sobremi/audio_english.mp3"></audio>
+                    <audio id="player-audio" autoplay="true" data-default-volume="2"></audio>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="filtros">
+                <button class="btn-filtro active" data-tecnologia="todas">Todas</button>
+                <button class="btn-filtro" data-tecnologia="react">React js</button>
+                <button class="btn-filtro" data-tecnologia="flutter">Flutter</button>
+                <button class="btn-filtro" data-tecnologia="angular">Angular</button>
+                <button class="btn-filtro" data-tecnologia="node">Node</button>
+            </div>
+
+            <div class="proyectos-grid">
+                <div class="proyecto" data-project-id="bus-tracker">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/atuDestinoPortada.png" alt="App de Rastreo de Buses">
+                        <div class="mobile-frame"></div>
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">App bus viaje</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Flutter</span>
+                            <span class="tecnologia">Dart</span>
+                            <span class="tecnologia">Riverpod</span>
+                            <span class="tecnologia">Firebase</span>
+                            <span class="tecnologia">FlutterMap</span>
+
+                        </div>
+                        <p class="proyecto-descripcion">
+                            Aplicación móvil para rastreo de buses en tiempo real con mapa interactivo. Los usuarios
+                            pueden
+                            ver las rutas, paradas y tiempos estimados de llegada.
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="proyecto" data-project-id="medi-schedule">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/auna/portada.jpg" alt="App de Citas Médicas">
+                        <div class="mobile-frame"></div>
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">App/Web TuMedico24/7</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Angular</span>
+                            <span class="tecnologia">Ionic</span>
+                            <span class="tecnologia">Capacitor</span>
+                            <span class="tecnologia">Stencil</span>
+                            <span class="tecnologia">Storybook</span>
+                            <span class="tecnologia">Aws</span>
+                            <span class="tecnologia">Firebase</span>
+                            <span class="tecnologia">Android Studio</span>
+                            <span class="tecnologia">Xcode</span>
+                            <span class="tecnologia">Jest</span>
+                        </div>
+                        <p class="proyecto-descripcion">
+                            La app/web Auna facilita la gestión de citas médicas. Permite agendar citas, tanto
+                            presenciales como teleconsultas, con especialistas de las clínicas Auna. También puedes ver
+                            tu historial de citas, consultar órdenes de exámenes y recetas
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="proyecto" data-project-id="enterprise-dashboard">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/viaje_seguro/portada.png" alt="Sistema Backoffice">
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">Viaje Seguro</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Flutter</span>
+                            <span class="tecnologia">Riverpod</span>
+                            <span class="tecnologia">FlutterMap</span>
+                            <span class="tecnologia">Dart</span>
+                        </div>
+                        <p class="proyecto-descripcion">
+                            Aplicativo que te permite buscar Agencias y Terminales autorizados por el MTC.
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="proyecto" data-project-id="portal_ciudadano">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/portal/portadaPortal.png" alt="Sistema Backoffice">
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">Portal Web Ciudadano</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Angular</span>
+                            <span class="tecnologia">node</span>
+                            <span class="tecnologia">SpringBoot</span>
+                            <span class="tecnologia">Sass</span>
+                            <span class="tecnologia">Postgress</span>
+                        </div>
+                        <p class="proyecto-descripcion">
+                            Plataforma digital da acceso al ciudadano a información y servicios relacionados con el
+                            transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y
+                            reportar incidencias relacionadas con el transporte.
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="proyecto" data-project-id="ibk">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/ibk/portadaibk.png" alt="Sistema Backoffice">
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">MicroFront Cordinacion entrega Tarjeta</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Angular</span>
+                            <span class="tecnologia">node</span>
+                            <span class="tecnologia">Stencil</span>
+                            <span class="tecnologia">Tailwind</span>
+                            <span class="tecnologia">Jasmine</span>
+                            <span class="tecnologia">Storybook</span>
+                        </div>
+                        <p class="proyecto-descripcion">
+                            Microfront Desktop/Mobil Modulo para Coordinar entrega de Tarjeta credito a clientes
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="proyecto" data-project-id="mibanco">
+                    <div class="proyecto-imagen">
+                        <img src="assets/images/mibanco/portadaMibanco.png" alt="Sistema Backoffice">
+                    </div>
+                    <div class="proyecto-contenido">
+                        <h3 class="proyecto-titulo">MicroFront Modulo Pagos y Prestamos</h3>
+                        <div class="proyecto-tecnologias">
+                            <span class="tecnologia">Angular</span>
+                            <span class="tecnologia">node</span>
+                            <span class="tecnologia">Stencil</span>
+                            <span class="tecnologia">Tailwind</span>
+                            <span class="tecnologia">jest</span>
+                            <span class="tecnologia">Storybook</span>
+                        </div>
+                        <p class="proyecto-descripcion">
+                            Este Modulo se encargaba de listar los prestamos y pagos de cuotas de los clientes
+                        </p>
+                        <a href="#" class="btn view-detail-btn">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="project-detail" class="project-detail">
+        <div class="container">
+            <button id="close-detail" class="btn">
+                <i class="fas fa-arrow-left"></i> Volver
+            </button>
+            <div id="detail-content"></div>
+        </div>
+    </section>
+
+    <!-- Modal para multimedia -->
+    <div id="media-modal" class="media-modal">
+        <div class="media-modal-content">
+            <button class="close-media-modal">&times;</button>
+            <div class="modal-media-container"> <!-- Cambiado el nombre de la clase -->
+                <iframe id="media-iframe" frameborder="0" allowfullscreen></iframe>
+                <img id="media-image" src="" alt="Imagen ampliada">
+            </div>
+        </div>
+    </div>
+    <div class="music-player">
+        <div class="player-header">
+            <span>Playlist</span>
+            <button class="player-close-btn">&times;</button>
+        </div>
+        <div class="playlist">
+            <div class="track" data-src="assets/audio.mp3">
+                <span>1. Canción Inspiradora</span>
+                <button class="play-btn">▶</button>
+            </div>
+            <div class="track" data-src="assets/audio2.mp3">
+                <span>2. Música Relajante</span>
+                <button class="play-btn">▶</button>
+            </div>
+            <div class="track" data-src="assets/pushit.mp3">
+                <span>3. Tema Épico</span>
+                <button class="play-btn">▶</button>
+            </div>
+        </div>
+        <div class="audio-visualizer-container">
+            <div class="speaker speaker-left">
+                <div class="speaker-body">
+                    <div class="speaker-grill"></div>
+                    <div class="speaker-cone"></div>
+                    <div class="pulse-effect"></div>
+                </div>
+                <div class="speaker-base"></div>
+            </div>
+
+            <div class="audio-visualizer" id="audio-visualizer"></div>
+
+            <div class="speaker speaker-right">
+                <div class="speaker-body">
+                    <div class="speaker-grill"></div>
+                    <div class="speaker-cone"></div>
+                    <div class="pulse-effect"></div>
+                </div>
+                <div class="speaker-base"></div>
+            </div>
+        </div>
+
+        <audio id="player-audio"></audio>
+    </div>
+
+    <footer>
+        <h2>¿Listo para trabajar juntos?</h2>
+        <p>Contáctame para nuevos proyectos y colaboraciones</p>
+        <div class="redes-sociales">
+            <a href="https://www.linkedin.com/in/victor-humberto-arias-caballero-a03b5934/" class="linkedin"
+                target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/51926296519?text=Hola,%20estoy%20interesado%20en%20tu%20portafolio" class="whatsapp"
+                target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/victorypower02/" class="instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:victoryfullpower@gmail.com" class="email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>© 2025 Portafolio Creativo. Todos los derechos reservados.</p>
+    </footer>
+<!-- Reproductor de video -->
+<div class="video-player hidden">
+    <video id="video-track" muted loop playsinline>
+        <!-- Las fuentes de video se cargarán dinámicamente -->
+    </video>
+</div>
+
+<!-- Botón para mostrar/ocultar video -->
+<button id="video-toggle" class="video-toggle-btn" title="Mostrar/Ocultar video">
+    <i class="fas fa-video"></i>
+</button>
+    <script>
+        $(document).ready(function () {
+            // Datos de los proyectos
+            const projectsData = {
+                "bus-tracker": {
+                    title: "App bus viaje",
+                    client: "Autoridad de Transporte Urbano para Lima y Callao",
+                    duration: "1 año",
+                    role: "Desarrollador Frontend",
+                    image: "assets/images/detallePortada.png",
+                    technologies: ["Flutter", "Dart", "Riverpod", "FlutterMap"],
+                    description: "App con Mapa interactivo que te permitira calcular tiempos y organizar tu día",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "lTAkX9Af9Nc",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "8cQVOzIXFP8",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "youtube",
+                            id: "dC5FvScThRo",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "hDQr86O6Q2A",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/estructuracarpetas.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/architecture_diagram.jpeg"
+                        },
+
+
+                    ],
+                    features: [
+                        "Facilita planear un viaje antes de salir desde un punto A hasta un punto B",
+                        "Muestra los paraderos del transporte público concesionado (Metropolitano, corredores y la Línea 1 y 2 del Metro de Lima).",
+                        "Incluye versión en inglés para turistas y ciudadanos extranjeros.",
+                        "Historial de viajes",
+                        "Es compatible con el sistema IOS y Android."
+                    ],
+                    challenge: "El principal desafío fue optimizar el tiempo de respuesta y consumo de los servicios",
+                    solution: "Implementamos un websocket de esta forma el app estaria en modo escucha, integramos un bd interna(en el dispositivo) y su actualizacion atravez de firebase usando feature-flag, finalmente para optimizar el tiempo de respuesta del servicio principal de buses, se implemento un algoritmo del lado de front para balancear el procesamiento logico de back"
+                },
+                "medi-schedule": {
+                    title: "App TuMedico24/7",
+                    client: "Auna",
+                    duration: "2 años",
+                    role: "Desarrollador Frontend Ionic/Angular",
+                    image: "assets/images/auna/detallePortada.png",
+                    technologies: ["Ionic", "Capacitor", "Stencil", "Storybook", "Aws", "Firebase", "Android Studio", "Xcode"],
+
+                    description: "Plataforma de gestión de citas médicas con opciones de telemedicina. Incluye búsqueda de especialistas, historial médico y recordatorios automáticos.",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "7HrJc4P8_8E",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "k1utRHZj3AE",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+
+                        {
+                            type: "image",
+                            url: "assets/images/auna/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/auna/sample2.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/auna/arquitectura.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/auna/estructuracarpetas.png"
+                        },
+
+
+                    ],
+                    features: [
+                        "Agendamiento de citas en línea",
+                        "Videollamadas integradas",
+                        "Historial médico digital",
+                        "Recordatorios automáticos por SMS y email",
+                        "Prescripciones electrónicas"
+                    ],
+                    challenge: "Mantener sincronizados los cambios tanto del app como de la web",
+                    solution: "Crear una arquitectura clean, aislando la capa de datos, la misma que alimentaba a ambos proyectos App y Web"
+                },
+                "enterprise-dashboard": {
+                    title: "App Viaje Seguro",
+                    client: "Sutran",
+                    duration: "1 año",
+                    role: "Desarrollador Frontend Flutter",
+                    image: "assets/images/viaje_seguro/portada.png",
+                    technologies: ["Flutter", "Dart", "Riverpod", "FlutterMap"],
+                    description: "Aplicativo que te permite buscar Agencias y Terminales autorizados por el MTC.",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "gj019Y6N8s0",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "IoCYyhtoguw",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "QGa7m1teoU0",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/viaje_seguro/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/viaje_seguro/sample2.png"
+                        },
+
+
+
+                    ],
+                    features: [
+                        "Monitorea tu viaje",
+                        "Ubica puntos de pasajes",
+                        "Reporta incidentes(accidentes,robos)",
+                        "Mapa interactivo de alertas",
+                    ],
+                    challenge: "Zonas con mala cobertura pueden causar pérdida de datos de ubicación.",
+                    solution: "Almacenamiento offline en el dispositivo y sincronización cuando haya conexión."
+                },
+                "portal_ciudadano": {
+                    title: "Portal Web Ciudadano",
+                    client: "Atu",
+                    duration: "6 meses",
+                    role: "Desarrollador FullStack",
+                    image: "assets/images/portal/portadaPortal.png",
+                    technologies: ["Angular", "Typescript", "Sass", "SpringBoot", "Postgress"],
+                    description: "Plataforma digital da acceso al ciudadano a información y servicios relacionados con el transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y reportar incidencias relacionadas con el transporte. ",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "cNZAAsTbrZY",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/portal/portal_back.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/portal_front.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/sisatu_back.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/sisatu_front.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/postgress.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/portal/sample2.png"
+                        },
+
+
+
+                    ],
+                    features: [
+                        "Realizar pagos, solicitar información, y presentar reclamaciones.",
+                        "Reportar incidencias",
+                        "Acceder a información de transparencia",
+                        "Consultar récord de infracciones",
+                        "Consultar papeletas de infracción por Cinemómetro"
+                    ],
+                    challenge: "En Reportes se requeria mejoras visuales que el actual plugin no soportaba",
+                    solution: "Se requeria subir la version de angular y esto ocasiono imcompatibilidad con otros plugins, lo cual costo tiempo depurar"
+                },
+                "ibk": {
+                    title: "MicroFront Cordinacion entrega Tarjeta",
+                    client: "IBK",
+                    duration: "6 meses",
+                    role: "Arquitecto Frontend",
+                    image: "assets/images/ibk/portadaibk.png",
+                    technologies: ["Angular", "ngRx", "node", "Stencil", "Tailwind", "Storybook", "Karma"],
+                    description: "Microfront Desktop/Mobil Modulo para Coordinar entrega de Tarjeta credito a clientes",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "3XsTH3vYMJg",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/ibk/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ibk/sample4.jpeg"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ibk/sample3.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ibk/sample5.jpeg"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ibk/sample6.jpeg"
+                        },
+
+
+
+                    ],
+                    features: [
+                        "Registro de contacto respaldo",
+                        "Seleccion de fecha y hora de entrega",
+                        "Registrar o editar direccion",
+                        "Registro de peticion de entrega de tarjeta",
+
+                    ],
+                    challenge: "Problemas con el codigo generado por tailwind, hacia conflicto cuando se colocaba en iframe",
+                    solution: "Cambiar por simple css, ya que este no genera codigo extra"
+                },
+                "mibanco": {
+                    title: "MicroFront Modulo Pagos y Prestamos",
+                    client: "MiBanco",
+                    duration: "6 meses",
+                    role: "Desarrollador Frontend",
+                    image: "assets/images/mibanco/sample5.png",
+                    technologies: ["Angular", "ngRx", "node", "Stencil", "Tailwind", "Storybook", "Karma"],
+                    description: "Plataforma digital da acceso al ciudadano a información y servicios relacionados con el transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y reportar incidencias relacionadas con el transporte. ",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "KzLFOsk8VIU",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample2.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample3.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample4.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample5.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/mibanco/sample6.png"
+                        },
+
+
+
+                    ],
+                    features: [
+                        "Consulta de Prestamos",
+                        "Consulta de cuotas de Prestamo Pagadas",
+                        "Consulta de siguiente cuota",
+                        "Formas de Pago",
+                        "Consultar cuotas atrasadas"
+                    ],
+                    challenge: "Necesidad de tener despliegues mas rapidos",
+                    solution: "Implementacion de Ci/Cd (Continuous Integration/Continuous Delivery)"
+                },
+            };
+
+            // Manejar clic en botones "Ver detalles"
+            $('.view-detail-btn').on('click', function (e) {
+                e.preventDefault();
+                const projectId = $(this).closest('.proyecto').data('project-id');
+                showProjectDetail(projectId);
+            });
+
+            // Función para mostrar el detalle del proyecto
+            function showProjectDetail(projectId) {
+                const project = projectsData[projectId];
+                if (!project) return;
+
+                // Construir el contenido del detalle
+                const detailContent = `
+        <div class="project-detail-content">
+            <!-- Card de información del proyecto -->
+            <div class="project-info-card">
+                <div class="info-item">
+                    <span class="info-label">Cliente:</span>
+                    <span>${project.client || 'No especificado'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Duración:</span>
+                    <span>${project.duration || 'No especificado'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Rol:</span>
+                    <span>${project.role || 'No especificado'}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Tecnologías:</span>
+                    <span>${project.technologies.join(', ')}</span>
+                </div>
+            </div>
+            
+            <img src="${project.image}" alt="${project.title}" class="project-detail-image">
+            
+            <h2>${project.title}</h2>
+            
+            <p class="project-detail-description">${project.description}</p>
+            
+            <!-- Galería multimedia -->
+            ${project.media && project.media.length > 0 ? `
+            <div class="media-section">
+                <h3>Galería Multimedia</h3>
+                <div class="media-gallery">
+                    ${project.media.map(item => `
+                        <div class="media-item" data-type="${item.type}" data-src="${item.type === 'youtube' ?
+                        `https://www.youtube.com/embed/${item.id}` : item.url}">
+                            ${item.type === 'youtube' ? `
+                                <img src="https://img.youtube.com/vi/${item.id}/hqdefault.jpg" alt="Video" class="media-thumbnail">
+                                <span class="media-type">Video</span>
+                            ` : `
+                                <img src="${item.thumbnail || item.url}" alt="Imagen" class="media-thumbnail">
+                                <span class="media-type">Imagen</span>
+                            `}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
+            
+            <div class="project-features">
+                <h3>Características principales</h3>
+                <ul>
+                    ${project.features.map(feat => `<li>${feat}</li>`).join('')}
+                </ul>
+            </div>
+            
+            <div class="project-challenge">
+                <h3>Desafío</h3>
+                <p>${project.challenge}</p>
+            </div>
+            
+            <div class="project-solution">
+                <h3>Solución implementada</h3>
+                <p>${project.solution}</p>
+            </div>
+        </div>
+    `;
+
+                // Insertar el contenido y mostrar la sección
+                $('#detail-content').html(detailContent);
+                $('#project-detail').addClass('active');
+
+                // Configurar eventos para la galería multimedia
+                setupMediaGallery();
+
+                // Desplazar al inicio
+
+            }
+
+            function setupMediaGallery() {
+                const mediaModal = $('#media-modal');
+                const mediaIframe = $('#media-iframe');
+                const mediaImage = $('#media-image');
+
+                $('.media-item').on('click', function () {
+                    const type = $(this).data('type');
+                    const src = $(this).data('src');
+
+                    if (type === 'youtube') {
+                        mediaIframe.attr('src', src).show();
+                        mediaImage.hide();
+                    } else {
+                        mediaImage.attr('src', src).show();
+                        mediaIframe.hide();
+                    }
+
+                    mediaModal.addClass('active');
+
+                    // Detener cualquier video de perfil que esté reproduciéndose
+                    $('.video-perfil').each(function () {
+                        this.pause();
+                        $(this).removeClass('active');
+                    });
+                });
+
+                $('.close-media-modal').on('click', function () {
+                    mediaModal.removeClass('active');
+                    mediaIframe.attr('src', ''); // Detener videos al cerrar
+                });
+
+                // Cerrar al hacer clic fuera del contenido
+                mediaModal.on('click', function (e) {
+                    if ($(e.target).hasClass('media-modal')) {
+                        mediaModal.removeClass('active');
+                        mediaIframe.attr('src', '');
+                    }
+                });
+            }
+
+            // Manejar clic en botón "Volver"
+            $('#close-detail').on('click', function () {
+                $('#project-detail').removeClass('active');
+                $('main').css('opacity', '1').css('pointer-events', 'auto');
+                history.pushState(null, null, ' ');
+            });
+
+            // Manejar el botón de retroceso del navegador
+            $(window).on('popstate', function (event) {
+                if (event.state && event.state.projectId) {
+                    showProjectDetail(event.state.projectId);
+                } else {
+                    $('#project-detail').removeClass('active');
+                    $('main').css('opacity', '1').css('pointer-events', 'auto');
+                }
+            });
+
+            // Cargar proyecto desde hash en URL al inicio
+            if (window.location.hash) {
+                const projectId = window.location.hash.substring(1);
+                if (projectsData[projectId]) {
+                    showProjectDetail(projectId);
+                }
+            }
+
+            // ===== [CÓDIGO EXISTENTE] =====
+            // Filtrado de proyectos
+            $('.btn-filtro').on('click', function () {
+                $('.btn-filtro').removeClass('active');
+                $(this).addClass('active');
+
+                const tecnologia = $(this).data('tecnologia');
+                $('.proyecto').each(function () {
+                    if (tecnologia === 'todas') {
+                        $(this).show();
+                    } else {
+                        const tecnologias = $(this).find('.tecnologia').map(function () {
+                            return $(this).text().toLowerCase().replace('.', '').replace(' ', '-');
+                        }).get();
+
+                        if (tecnologias.includes(tecnologia)) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            });
+
+            // ===== [VARIABLES GLOBALES] =====
+            let currentLanguage = 'es';
+            let audioEnabled = false;
+            let currentAudioElement = null;
+
+            // Inicializar sistemas
+            initLanguageSystem();
+            initAudioSystem();
+            initDarkMode();
+            initParticles();
+            initLoadingScreen();
+
+            // Inicializar el audio correspondiente al idioma actual
+            currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
+
+            // ===== [SISTEMA DE IDIOMAS] =====
+            function initLanguageSystem() {
+                $('#toggle-language').on('click', toggleLanguage);
+                updateLanguageButton();
+            }
+
+            function toggleLanguage() {
+                const aboutMeAudio = currentLanguage === 'es' ? $('#audio-es')[0] : $('#audio-en')[0];
+                const video = $('.video-perfil')[0];
+                const musicPlayer = $('#player-audio')[0];
+
+                // 1. Detener audio y video de "sobre mí"
+                aboutMeAudio.pause();
+                aboutMeAudio.currentTime = 0;
+                video.pause();
+                $('.video-perfil').removeClass('active');
+
+                // 2. Restaurar estado del audio
+                audioEnabled = false;
+                updateAudioButton();
+
+                // 3. Manejo específico para iOS
+                if (isIOS()) {
+                    // Si el playlist estaba pausado (por ser iOS y estar reproduciendo el audio de sobre mí)
+                    if (wasMusicPlayingBeforeAboutMe && musicPlayer.paused) {
+                        // Necesitamos una interacción del usuario para reanudar en iOS
+                        $('body').one('click touchstart', function () {
+                            musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
+                            musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                        });
+                    }
+                } else {
+                    // Para otros dispositivos, simplemente reanudamos si estaba reproduciéndose
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
+                        musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                    }
+                }
+
+                // 4. Cambiar idioma
+                currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
+
+                // 5. Actualizar interfaz
+                updateLanguageButton();
+                applyLanguage(currentLanguage);
+                saveLanguagePreference();
+            }
+
+            function updateLanguageButton() {
+                const buttonText = currentLanguage === 'es' ? 'EN' : 'ES';
+                $('#toggle-language').html(`<i class="fas fa-language"></i> ${buttonText}`).data('lang', currentLanguage);
+            }
+
+            function applyLanguage(lang) {
+                const translations = {
+                    es: {
+                        title: "Mi Portafolio Creativo",
+                        subtitle: "Diseño • Desarrollo • Innovación",
+                        greeting: "¡Hola, soy Victor!",
+                        bio1: "Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones web y móviles dinámicas.",
+                        bio2: "A través de este portafolio, quiero compartir mis habilidades y mis capacidades para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo que podríamos crear juntos.",
+                        bio3: "Sin más, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o simplemente compartir ideas!",
+                        filterAll: "Todas",
+                        filterReact: "React js",
+                        filterFlutter: "Flutter",
+                        filterLaravel: "Angular",
+                        filterNode: "Node",
+                        cvEs: "CV Español",
+                        cvEn: "CV English",
+                        readyTitle: "¿Listo para trabajar juntos?",
+                        readyText: "Contáctame para nuevos proyectos y colaboraciones",
+                        copyright: "© 2025 Portafolio Creativo. Todos los derechos reservados.",
+                        backButton: "<i class='fas fa-arrow-left'></i> Volver",
+                        viewDetails: "Ver detalles"
+                    },
+                    en: {
+                        title: "My Creative Portfolio",
+                        subtitle: "Design • Development • Innovation",
+                        greeting: "Hello, I'm Victor!",
+                        bio1: "A passionate Frontend Developer with experience in creating dynamic web and mobile applications.",
+                        bio2: "Through this portfolio, I want to share my skills and capabilities to build innovative and customized web solutions. I'd love to discuss what we could create together.",
+                        bio3: "Without further ado, I invite you to explore my projects and connect if you're looking to collaborate or simply share ideas!",
+                        filterAll: "All",
+                        filterReact: "React js",
+                        filterFlutter: "Flutter",
+                        filterLaravel: "Angular",
+                        filterNode: "Node",
+                        cvEs: "Spanish CV",
+                        cvEn: "English CV",
+                        readyTitle: "Ready to work together?",
+                        readyText: "Contact me for new projects and collaborations",
+                        copyright: "© 2025 Creative Portfolio. All rights reserved.",
+                        backButton: "<i class='fas fa-arrow-left'></i> Back",
+                        viewDetails: "View details"
+                    }
+                };
+
+                // Actualizar elementos del header
+                $('h1').text(translations[lang].title).attr('data-text', translations[lang].title);
+                $('.subtitulo').text(translations[lang].subtitle);
+
+                // Actualizar sección "Sobre mí"
+                $('#greeting-text').text(translations[lang].greeting);
+                const bioParagraphs = $('.bio p');
+                bioParagraphs.eq(0).text(translations[lang].bio1);
+                bioParagraphs.eq(1).text(translations[lang].bio2);
+                bioParagraphs.eq(2).text(translations[lang].bio3);
+
+                // Actualizar botones de filtro
+                $('.btn-filtro[data-tecnologia="todas"]').text(translations[lang].filterAll);
+                $('.btn-filtro[data-tecnologia="react"]').text(translations[lang].filterReact);
+                $('.btn-filtro[data-tecnologia="flutter"]').text(translations[lang].filterFlutter);
+                $('.btn-filtro[data-tecnologia="angular"]').text(translations[lang].filterLaravel);
+                $('.btn-filtro[data-tecnologia="node"]').text(translations[lang].filterNode);
+
+                // Actualizar botones de CV
+                $('#download-cv-es').text(translations[lang].cvEs);
+                $('#download-cv-en').text(translations[lang].cvEn);
+
+                // Actualizar footer
+                $('footer h2').text(translations[lang].readyTitle);
+                $('footer p').eq(0).text(translations[lang].readyText);
+                $('footer p').eq(1).text(translations[lang].copyright);
+
+                // Actualizar botones de detalles y volver
+                $('.view-detail-btn').text(translations[lang].viewDetails);
+                $('#close-detail').html(translations[lang].backButton);
+
+                // Actualizar el texto del botón de idioma
+                updateLanguageButton();
+            }
+            // ===== [DETECCIÓN DE iOS] =====
+            function isIOS() {
+                return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            }
+            // ===== [SISTEMA DE AUDIO] =====
+            function initAudioSystem() {
+                $('.speaker-btn').on('click', toggleAudioPlayback);
+                $('.reset-btn').on('click', resetAudio);
+
+                // Configurar eventos para cuando termina el audio
+                $('#audio-es, #audio-en').on('ended', function () {
+                    audioEnabled = false;
+                    updateAudioButton();
+                    $('.video-perfil').removeClass('active');
+                    $('.video-perfil')[0].pause();
+
+                    // Restaurar playlist si estaba reproduciéndose
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        const musicPlayer = $('#player-audio')[0];
+                        musicPlayer.volume = musicVolumeBeforeAboutMe;
+                        if (isIOS()) {
+                            $('body').one('click touchstart', function () {
+                                musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                            });
+                        } else {
+                            musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                        }
+                    }
+                });
+            }
+            // Variables para control de estado
+            let wasMusicPlayingBeforeAboutMe = false;
+            let musicVolumeBeforeAboutMe = 0.5;
+            function resumePlaylist() {
+                const musicPlayer = $('#player-audio')[0];
+                if (musicPlayer) {
+                    musicPlayer.volume = musicVolumeBeforeAboutMe;
+                    musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                }
+            }
+
+            // ===== [CONTROL DE VOLÚMENES] =====
+            let musicVolume = 0.5;
+
+            function lowerMusicVolume() {
+                const musicPlayer = $('#player-audio')[0];
+                musicVolume = musicPlayer.volume; // Guardamos el volumen actual
+                musicPlayer.volume = 0.1; // Reducimos a sólo 10% del volumen (antes era 0.2 - 20%)
+            }
+
+            function restoreMusicVolume() {
+                const musicPlayer = $('#player-audio')[0];
+                if (musicPlayer && musicVolume !== undefined) {
+                    musicPlayer.volume = musicVolume; // Restaura el volumen original del playlist
+                }
+            }
+
+            function toggleAudioPlayback() {
+                const aboutMeAudio = currentLanguage === 'es' ? $('#audio-es')[0] : $('#audio-en')[0];
+                const video = $('.video-perfil')[0];
+                const musicPlayer = $('#player-audio')[0];
+
+                aboutMeAudio.volume = 1.0;
+
+                if (aboutMeAudio.paused) {
+                    // Guardar estado del playlist antes de cambiar
+                    wasMusicPlayingBeforeAboutMe = !musicPlayer.paused;
+                    musicVolumeBeforeAboutMe = musicPlayer.volume;
+
+                    // Mostrar video
+                    $('.video-perfil').addClass('active');
+
+                    // Comportamiento específico para iOS
+                    if (isIOS()) {
+                        // En iOS debemos pausar el playlist completamente
+                        if (!musicPlayer.paused) {
+                            musicPlayer.pause();
+                        }
+
+                        // Reproducir audio y video dentro de un gesto del usuario
+                        $('body').one('click touchstart', function () {
+                            video.currentTime = 0;
+                            video.play().catch(e => console.log("iOS video play error:", e));
+                            aboutMeAudio.play()
+                                .then(() => {
+                                    audioEnabled = true;
+                                    updateAudioButton();
+                                })
+                                .catch(error => {
+                                    console.error("iOS audio play error:", error);
+                                    $('.video-perfil').removeClass('active');
+                                    // Restaurar playlist si falla
+                                    if (wasMusicPlayingBeforeAboutMe) {
+                                        musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                        musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                                    }
+                                });
+                        });
+                    } else {
+                        // Para otros dispositivos, solo bajar volumen del playlist
+                        if (!musicPlayer.paused) {
+                            musicPlayer.volume = 0.1;
+                        }
+
+                        // Reproducir normalmente
+                        video.currentTime = 0;
+                        video.play().catch(e => console.log("Video play error:", e));
+                        aboutMeAudio.play()
+                            .then(() => {
+                                audioEnabled = true;
+                                updateAudioButton();
+                            })
+                            .catch(error => {
+                                console.error("Audio play error:", error);
+                                $('.video-perfil').removeClass('active');
+                                // Restaurar playlist si falla
+                                if (wasMusicPlayingBeforeAboutMe) {
+                                    musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                    musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                                }
+                            });
+                    }
+                } else {
+                    // Pausar audio de "sobre mí"
+                    aboutMeAudio.pause();
+                    aboutMeAudio.currentTime = 0;
+                    video.pause();
+                    $('.video-perfil').removeClass('active');
+
+                    // Restaurar playlist según dispositivo
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        if (isIOS()) {
+                            // En iOS necesitamos interacción del usuario para reanudar
+                            $('body').one('click touchstart', function () {
+                                musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                            });
+                        } else {
+                            // Otros dispositivos pueden reanudar directamente
+                            musicPlayer.volume = musicVolumeBeforeAboutMe;
+                            musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                        }
+                    }
+
+                    audioEnabled = false;
+                    updateAudioButton();
+                }
+            }
+
+            // Añade este evento para cuando termine el audio
+            $('#audio-es, #audio-en').on('ended', function () {
+                audioEnabled = false;
+                updateAudioButton();
+                $('.video-perfil').removeClass('active');
+                $('.video-perfil')[0].pause();
+
+                // Solo reanudar el playlist si estaba reproduciéndose antes
+                if (wasMusicPlayingBeforeAboutMe) {
+                    if (isIOS()) {
+                        $('body').one('click touchstart', function () {
+                            resumePlaylist();
+                        });
+                    } else {
+                        resumePlaylist();
+                    }
+                }
+            });
+
+            function resetAudio() {
+                if (!currentAudioElement) return;
+
+                currentAudioElement.currentTime = 0;
+                if (!audioEnabled) {
+                    // Para iOS, necesitamos asegurarnos de que el reset ocurra dentro de un gesto del usuario
+                    if (isIOS()) {
+                        $('body').one('click touchstart', function () {
+                            currentAudioElement.play()
+                                .then(() => {
+                                    audioEnabled = true;
+                                    updateAudioButton();
+                                })
+                                .catch(error => {
+                                    console.error("Error en iOS al resetear audio:", error);
+                                });
+                        });
+                    } else {
+                        currentAudioElement.play()
+                            .then(() => {
+                                audioEnabled = true;
+                                updateAudioButton();
+                            });
+                    }
+                }
+                updateAudioButton();
+            }
+
+            function handleAudioEnd() {
+                audioEnabled = false;
+                updateAudioButton();
+            }
+
+            function updateAudioButton() {
+                $('.speaker-btn').html(audioEnabled ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-volume-up"></i>');
+            }
+
+            // ===== [OTRAS FUNCIONALIDADES] =====
+            function initDarkMode() {
+                $('#toggle-dark-mode').on('click', toggleDarkMode);
+
+                if (localStorage.getItem('darkMode') === 'true') {
+                    $('body').addClass('dark-mode');
+                    $('#toggle-dark-mode').html('<i class="fas fa-sun"></i>');
+                }
+            }
+
+            function toggleDarkMode() {
+                $('body').toggleClass('dark-mode');
+                const isDark = $('body').hasClass('dark-mode');
+                $('#toggle-dark-mode').html(isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>');
+                localStorage.setItem('darkMode', isDark);
+            }
+
+            function initParticles() {
+                const container = $('#particles-container');
+                for (let i = 0; i < 20; i++) {
+                    const particle = $('<div class="particle"></div>');
+                    const size = Math.random() * 3 + 2;
+                    particle.css({
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        '--move-x': `${(Math.random() - 0.5) * 100}px`,
+                        '--move-y': `${(Math.random() - 0.5) * 100}px`,
+                        'animation-delay': `${Math.random() * 3}s`
+                    });
+                    container.append(particle);
+                }
+            }
+
+            function initLoadingScreen() {
+                setTimeout(() => {
+                    $('.loading-screen').css('opacity', '0');
+                    setTimeout(() => $('.loading-screen').remove(), 1000);
+                }, 1500);
+            }
+
+            function loadPreferences() {
+                const savedLang = localStorage.getItem('portfolioLanguage');
+                if (savedLang) {
+                    currentLanguage = savedLang;
+                    applyLanguage(savedLang);
+                }
+            }
+
+            function saveLanguagePreference() {
+                localStorage.setItem('portfolioLanguage', currentLanguage);
+            }
+
+            // Reproductor de música
+            const player = $('#player-audio')[0];
+            const tracks = $('.track');
+            const musicModal = $('#music-modal');
+            let currentTrackIndex = 0;
+            let isMusicPlaying = false;
+
+            // Configurar primera canción
+            if (tracks.length > 0) {
+                player.src = tracks.eq(0).data('src');
+                updateTrackDisplay();
+            }
+
+            // Mostrar modal de activación
+            setTimeout(() => {
+                musicModal.addClass('active');
+            }, 1000);
+
+            // Control de botones del modal
+            $('#activate-music').on('click', function () {
+                playCurrentTrack();
+                musicModal.removeClass('active');
+            });
+
+            $('#decline-music, .close-modal').on('click', function () {
+                musicModal.removeClass('active');
+            });
+
+            // Funciones principales del reproductor
+            function playCurrentTrack() {
+                player.play()
+                    .then(() => {
+                        isMusicPlaying = true;
+                        updateTrackDisplay();
+                    })
+                    .catch(error => {
+                        console.error("Error al reproducir:", error);
+                    });
+            }
+
+            function updateTrackDisplay() {
+                tracks.each(function (index) {
+                    const btn = $(this).find('.play-btn');
+                    if (index === currentTrackIndex && isMusicPlaying) {
+                        btn.text('❚❚');
+                        $(this).addClass('active');
+                    } else {
+                        btn.text('▶');
+                        $(this).removeClass('active');
+                    }
+                });
+            }
+
+            // Control manual de canciones
+            $('.play-btn').on('click', function () {
+                const track = $(this).closest('.track');
+                const index = track.index();
+
+                if (currentTrackIndex === index) {
+                    if (player.paused) {
+                        playCurrentTrack();
+                    } else {
+                        player.pause();
+                        isMusicPlaying = false;
+                        updateTrackDisplay();
+                    }
+                } else {
+                    currentTrackIndex = index;
+                    player.src = track.data('src');
+                    playCurrentTrack();
+                }
+            });
+
+            // Cambio automático al terminar canción
+            player.addEventListener('ended', function () {
+                currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+                player.src = tracks.eq(currentTrackIndex).data('src');
+                playCurrentTrack();
+            });
+
+            // Si ya estaba activado, intentar reproducción
+            if (localStorage.getItem('musicEnabled') === 'true') {
+                playCurrentTrack();
+            }
+
+            // Cerrar el reproductor al hacer clic fuera
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('.music-player').length &&
+                    !$(e.target).is('.player-close-btn')) {
+                    $('.music-player').css('transform', 'translateX(200px)');
+                }
+            });
+
+            // Cerrar con el botón X
+            $('.player-close-btn').on('click', function () {
+                $('.music-player').css('transform', 'translateX(200px)');
+            });
+
+            // Mostrar al hacer hover
+            $('.music-player').on('mouseenter', function () {
+                $(this).css('transform', 'translateX(0)');
+            });
+
+            function toggleMusicPlayer(show) {
+                const player = document.querySelector('.music-player');
+                player.style.transform = show ? 'translateX(0)' : 'translateX(200px)';
+            }
+
+            function setupMusicPlayer() {
+                const player = $('.music-player');
+                const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+                if (!isTouch) {
+                    // Comportamiento para desktop (hover)
+                    player.on('mouseenter', function () {
+                        $(this).css('transform', 'translateX(0)');
+                    });
+
+                    player.on('mouseleave', function () {
+                        $(this).css('transform', 'translateX(200px)');
+                    });
+                } else {
+                    // Comportamiento para móvil (gestos táctiles)
+                    let touchStartX = 0;
+                    let playerVisible = false;
+
+                    player.on('touchstart', function (e) {
+                        touchStartX = e.originalEvent.touches[0].clientX;
+                    }, { passive: true });
+
+                    player.on('touchend', function (e) {
+                        const touchEndX = e.originalEvent.changedTouches[0].clientX;
+
+                        // Swipe izquierda (mostrar)
+                        if (touchStartX - touchEndX > 50 && !playerVisible) {
+                            player.css('transform', 'translateX(0)');
+                            playerVisible = true;
+                        }
+                        // Swipe derecha (ocultar)
+                        else if (touchEndX - touchStartX > 50 && playerVisible) {
+                            player.css('transform', 'translateX(200px)');
+                            playerVisible = false;
+                        }
+                    }, { passive: true });
+
+                    // Cerrar con el botón X
+                    $('.player-close-btn').on('click', function () {
+                        player.css('transform', 'translateX(200px)');
+                        playerVisible = false;
+                    });
+                }
+            }
+
+            // Inicializar el reproductor
+            setupMusicPlayer();
+
+            // Configurar el visualizador de audio
+
+            function setupAudioVisualizer() {
+                const visualizer = document.getElementById('audio-visualizer');
+                const player = document.getElementById('player-audio');
+                const speakers = document.querySelectorAll('.speaker');
+                const speakerBodies = document.querySelectorAll('.speaker-body');
+                const pulseEffects = document.querySelectorAll('.pulse-effect');
+
+                // Crear 30 barras para el visualizador
+                for (let i = 0; i < 30; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'audio-bar';
+                    bar.style.height = '2px';
+                    visualizer.appendChild(bar);
+                }
+
+                const bars = visualizer.querySelectorAll('.audio-bar');
+
+                // Crear contexto de audio
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const audioContext = new AudioContext();
+                const analyser = audioContext.createAnalyser();
+                const source = audioContext.createMediaElementSource(player);
+
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                analyser.fftSize = 256; // Más bandas de frecuencia para mejor detección de bajos
+
+                const bufferLength = analyser.frequencyBinCount;
+                const dataArray = new Uint8Array(bufferLength);
+
+                // Variables para seguimiento de bajos
+                let bassHistory = [];
+                const bassThreshold = 0.6;
+                let lastPulseTime = 0;
+
+                function animateBars() {
+                    if (player.paused) {
+                        // Efecto de "standby" cuando está pausado
+                        bars.forEach((bar, i) => {
+                            const randomHeight = Math.random() * 5 + 2;
+                            bar.style.height = `${randomHeight}px`;
+                            bar.style.opacity = '0.6';
+                        });
+
+                        // Quitar efectos psicodélicos cuando está pausado
+                        speakerBodies.forEach(body => {
+                            body.classList.remove('speaker-psycho');
+                        });
+                    } else {
+                        // Animar con los datos del audio
+                        analyser.getByteFrequencyData(dataArray);
+
+                        // Calcular niveles de frecuencia (bajos, medios, agudos)
+                        const bassStart = 0;
+                        const bassEnd = 10;
+                        const midStart = 11;
+                        const midEnd = 50;
+                        const highStart = 51;
+                        const highEnd = 100;
+
+                        let bassSum = 0;
+                        let midSum = 0;
+                        let highSum = 0;
+
+                        for (let i = bassStart; i < bassEnd; i++) {
+                            bassSum += dataArray[i];
+                        }
+
+                        for (let i = midStart; i < midEnd; i++) {
+                            midSum += dataArray[i];
+                        }
+
+                        for (let i = highStart; i < highEnd; i++) {
+                            highSum += dataArray[i];
+                        }
+
+                        const bassAvg = bassSum / (bassEnd - bassStart);
+                        const midAvg = midSum / (midEnd - midStart);
+                        const highAvg = highSum / (highEnd - highStart);
+
+                        // Normalizar valores (0-100)
+                        const bassLevel = bassAvg / 255;
+                        const midLevel = midAvg / 255;
+                        const highLevel = highAvg / 255;
+
+                        // Añadir a historial de bajos
+                        bassHistory.push(bassLevel);
+                        if (bassHistory.length > 10) bassHistory.shift();
+
+                        // Calcular promedio de bajos recientes
+                        const recentBass = bassHistory.reduce((a, b) => a + b, 0) / bassHistory.length;
+
+                        // Activar efectos psicodélicos cuando hay muchos bajos
+                        if (recentBass > bassThreshold) {
+                            speakerBodies.forEach(body => {
+                                body.classList.add('speaker-psycho');
+
+                                // Cambiar colores aleatorios
+                                const hue1 = Math.floor(Math.random() * 360);
+                                const hue2 = (hue1 + 120) % 360;
+                                body.style.background = `linear-gradient(135deg, hsl(${hue1}, 100%, 50%), hsl(${hue2}, 100%, 50%)`;
+                            });
+                        } else {
+                            speakerBodies.forEach(body => {
+                                body.classList.remove('speaker-psycho');
+                                body.style.background = `linear-gradient(135deg, var(--color-primario), var(--color-secundario))`;
+                            });
+                        }
+
+                        // Efecto de pulso en los parlantes con los bajos
+                        const currentTime = Date.now();
+                        if (bassLevel > 0.7 && currentTime - lastPulseTime > 300) {
+                            pulseEffects.forEach(pulse => {
+                                pulse.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                                pulse.classList.add('pulse-active');
+                                setTimeout(() => {
+                                    pulse.classList.remove('pulse-active');
+                                }, 500);
+                            });
+                            lastPulseTime = currentTime;
+                        }
+
+                        // Mover los parlantes con el ritmo
+                        speakers.forEach(speaker => {
+                            const moveX = (Math.random() - 0.5) * bassLevel * 5;
+                            const moveY = (Math.random() - 0.5) * bassLevel * 3;
+                            speaker.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                        });
+
+                        // Animar las barras del visualizador
+                        bars.forEach((bar, i) => {
+                            // Distribuir las frecuencias en las barras
+                            let value;
+                            if (i < 10) {
+                                // Primeras 10 barras: bajos
+                                value = dataArray[Math.floor(i * 1.5)] / 5 || 2;
+                                bar.style.backgroundColor = `hsl(${200 + bassLevel * 60}, 100%, 50%)`;
+                            } else if (i < 20) {
+                                // Siguientes 10 barras: medios
+                                value = dataArray[Math.floor(15 + (i - 10) * 3)] / 4 || 2;
+                                bar.style.backgroundColor = `hsl(${100 + midLevel * 80}, 100%, 50%)`;
+                            } else {
+                                // Últimas 10 barras: agudos
+                                value = dataArray[Math.floor(45 + (i - 20) * 5)] / 3 || 2;
+                                bar.style.backgroundColor = `hsl(${0 + highLevel * 120}, 100%, 50%)`;
+                            }
+
+                            bar.style.height = `${value * 2}px`;
+                            bar.style.opacity = '1';
+                        });
+                    }
+
+                    requestAnimationFrame(animateBars);
+                }
+
+                // Iniciar animación
+                animateBars();
+
+                // Manejar el contexto de audio al interactuar con el reproductor
+                player.addEventListener('play', () => {
+                    if (audioContext.state === 'suspended') {
+                        audioContext.resume();
+                    }
+                });
+            }
+            
+
+
+
+            // Variables para control de video
+let videoPlayer = document.getElementById('video-track');
+let videoContainer = document.querySelector('.video-player');
+let videoToggleBtn = document.getElementById('video-toggle');
+let isVideoVisible = false;
+const videoSources = [
+    'assets/videos/video1.mp4',
+    'assets/videos/video2.mp4',
+    'assets/videos/video3.mp4'
+];
+
+// Precargar videos
+function preloadVideos() {
+    videoSources.forEach(src => {
+        const video = document.createElement('video');
+        video.src = src;
+        video.load();
+    });
+}
+
+// Inicializar reproductor de video
+function initVideoPlayer() {
+    // Precargar videos
+    preloadVideos();
+    
+    // Configurar eventos del botón de video
+    videoToggleBtn.addEventListener('click', toggleVideoVisibility);
+    
+    // Sincronizar video con música
+    player.addEventListener('play', syncVideoWithMusic);
+    player.addEventListener('pause', () => {
+        if (videoPlayer) videoPlayer.pause();
+    });
+    player.addEventListener('ended', changeVideoTrack);
+}
+
+// Sincronizar video con la música actual
+function syncVideoWithMusic() {
+    if (currentTrackIndex >= 0 && currentTrackIndex < videoSources.length) {
+        videoPlayer.src = videoSources[currentTrackIndex];
+        videoPlayer.currentTime = player.currentTime % videoPlayer.duration;
+        if (!player.paused) {
+            videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
+        }
+    }
+}
+
+// Cambiar video cuando cambia la canción
+function changeVideoTrack() {
+    videoPlayer.src = videoSources[currentTrackIndex];
+    videoPlayer.currentTime = 0;
+    if (!player.paused) {
+        videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
+    }
+    // Resetear visibilidad del video al cambiar canción
+    isVideoVisible = false;
+    videoContainer.classList.add('hidden');
+    videoToggleBtn.innerHTML = '<i class="fas fa-video"></i>';
+}
+
+// Mostrar/ocultar video
+function toggleVideoVisibility() {
+    isVideoVisible = !isVideoVisible;
+    
+    if (isVideoVisible) {
+        videoContainer.classList.remove('hidden');
+        videoToggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        if (!player.paused && videoPlayer.paused) {
+            videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
+        }
+    } else {
+        videoContainer.classList.add('hidden');
+        videoToggleBtn.innerHTML = '<i class="fas fa-video"></i>';
+    }
+}
+
+// Llamar a initVideoPlayer después de setupMusicPlayer
+ setupMusicPlayer();
+    initVideoPlayer();
+    setupAudioVisualizer();
+    
+    // Actualizar la función playCurrentTrack para manejar video
+    const originalPlayCurrentTrack = window.playCurrentTrack;
+    window.playCurrentTrack = function() {
+        originalPlayCurrentTrack();
+        syncVideoWithMusic();
+    };
+    
+    // Actualizar el evento de cambio de canción
+    player.addEventListener('ended', function() {
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        player.src = tracks.eq(currentTrackIndex).data('src');
+        playCurrentTrack();
+        changeVideoTrack();
+    });
+        });
+
+    </script>
+</body>
+
+</html>

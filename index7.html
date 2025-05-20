@@ -13,18 +13,22 @@
 
     <!-- Añade estos nuevos meta tags para compartir en redes sociales -->
     <meta property="og:title" content="Portafolio de Victor Arias - Desarrollador Frontend">
-    <meta property="og:description" content="Desarrollador Frontend especializado en Flutter, Angular, Ionic y React Native. Explora mis proyectos y experiencia profesional.">
-    <meta property="og:url" content="https://victoryfullpower.github.io/vac_portafolio/"> <!-- Cambia esto por tu URL real -->
-    <meta property="og:image" content="https://victoryfullpower.github.io/vac_portafolio/assets/images/perfil.jpg"> <!-- URL absoluta de tu imagen -->
+    <meta property="og:description"
+        content="Desarrollador Frontend especializado en Flutter, Angular, Ionic y React Native. Explora mis proyectos y experiencia profesional.">
+    <meta property="og:url" content="https://victoryfullpower.github.io/vac_portafolio/">
+    <!-- Cambia esto por tu URL real -->
+    <meta property="og:image" content="https://victoryfullpower.github.io/vac_portafolio/assets/images/perfil.jpg">
+    <!-- URL absoluta de tu imagen -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Portafolio Victor Arias">
-    
+
     <!-- Para Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portafolio de Victor Arias - Desarrollador Frontend">
-    <meta name="twitter:description" content="Desarrollador Frontend con experiencia en aplicaciones web y móviles. ¡Conoce mi trabajo!">
+    <meta name="twitter:description"
+        content="Desarrollador Frontend con experiencia en aplicaciones web y móviles. ¡Conoce mi trabajo!">
     <meta name="twitter:image" content="https://victoryfullpower.github.io/vac_portafolio/assets/images/perfil.jpg">
-    
+
     <!-- Resto de tus meta tags y enlaces... -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -1093,27 +1097,27 @@
         }
 
         #project-detail {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-fondo);
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 2rem 0;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.4s ease;
-    pointer-events: none;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-fondo);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 0;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
 
-#project-detail.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    display: block;
-}
+        #project-detail.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            display: block;
+        }
 
         .project-detail .container {
             max-width: 900px;
@@ -1228,7 +1232,7 @@
         .media-section li {
             margin-bottom: 0.5rem;
         }
-        
+
         @media (max-width: 768px) {
             .project-detail-image {
                 height: 250px;
@@ -1441,9 +1445,9 @@
         }
 
         /* Estilos para el modal de multimedia */
-       
 
-       
+
+
 
         #media-iframe,
         #media-image {
@@ -1478,400 +1482,421 @@
         /* ===== [ESTILOS MEJORADOS PARA SECCIÓN "SOBRE MÍ"] ===== */
 
 
-/* Media Queries específicas para iPhone */
-@supports (-webkit-touch-callout: none) {
-    .sobre-mi {
-        -webkit-overflow-scrolling: touch; /* Mejora scroll en iOS */
-        margin: -3rem auto 3rem auto;
-    }
-    
-    .perfil {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .bio {
-        text-align: center;
-        padding: 0 10px;
-    }
-}
+        /* Media Queries específicas para iPhone */
+        @supports (-webkit-touch-callout: none) {
+            .sobre-mi {
+                -webkit-overflow-scrolling: touch;
+                /* Mejora scroll en iOS */
+                margin: -3rem auto 3rem auto;
+            }
 
-/* Media Queries para móviles en general */
-@media (max-width: 768px) {
-    .sobre-mi {
-        margin-top: -2rem;
-        padding: 2rem 0;
-        width: calc(100% - 30px); /* Más estrecho en móviles */
-    }
-    
-    .perfil {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    
-    .foto-perfil {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .habilidades {
-        justify-content: center;
-    }
-    
-    .bio {
-        min-width: 100%;
-    }
-}
+            .perfil {
+                flex-direction: column;
+                gap: 2rem;
+            }
 
-/* Ajustes específicos para Safari */
-@media not all and (min-resolution:.001dpcm) { 
-    @supports (-webkit-appearance:none) {
-        .sobre-mi {
-            transform: translateX(-50%) translateZ(0); /* Acelera hardware */
+            .bio {
+                text-align: center;
+                padding: 0 10px;
+            }
         }
-    }
-}
 
-/* Estilos mejorados para el modal de imágenes */
-.media-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
+        /* Media Queries para móviles en general */
+        @media (max-width: 768px) {
+            .sobre-mi {
+                margin-top: -2rem;
+                padding: 2rem 0;
+                width: calc(100% - 30px);
+                /* Más estrecho en móviles */
+            }
 
-.media-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
 
-.media-modal-content {
-    position: relative;
-    width: 95%;
-    height: 95%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+            .foto-perfil {
+                width: 180px;
+                height: 180px;
+            }
 
-.close-media-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    font-size: 1.8rem;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-}
+            .habilidades {
+                justify-content: center;
+            }
 
-.media-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+            .bio {
+                min-width: 100%;
+            }
+        }
 
-#media-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    background: #000;
-    border-radius: 5px;
-}
+        /* Ajustes específicos para Safari */
+        @media not all and (min-resolution:.001dpcm) {
+            @supports (-webkit-appearance:none) {
+                .sobre-mi {
+                    transform: translateX(-50%) translateZ(0);
+                    /* Acelera hardware */
+                }
+            }
+        }
 
-/* Ajustes para mobile */
-@media (max-width: 768px) {
-    .media-modal-content {
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-    }
+        /* Estilos mejorados para el modal de imágenes */
+        .media-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
 
-    .close-media-modal {
-        top: 10px;
-        right: 10px;
-        font-size: 1.5rem;
-        width: 35px;
-        height: 35px;
-    }
+        .media-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    #media-image {
-        max-width: 95vw;
-        max-height: 95vh;
-    }
-}
+        .media-modal-content {
+            position: relative;
+            width: 95%;
+            height: 95%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-/* Ajustes para pantallas muy altas */
-@media (min-height: 800px) {
-    #media-image {
-        max-height: 90vh;
-    }
-}
+        .close-media-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            font-size: 1.8rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
 
-/* Ajustes para orientación horizontal en móviles */
-@media (max-width: 768px) and (orientation: landscape) {
-    #media-image {
-        max-height: 90vh;
-    }
-}
+        .media-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* LinkedIn */
-.redes-sociales a.linkedin {
-    background-color: #0077B5;
-}
-.track-preview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    padding: 15px;
-    background: rgba(78, 205, 196, 0.1);
-    border-radius: 8px;
-}
+        #media-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            background: #000;
+            border-radius: 5px;
+        }
 
-.music-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-secundario);
-    border-radius: 50%;
-    padding: 10px;
-}
+        /* Ajustes para mobile */
+        @media (max-width: 768px) {
+            .media-modal-content {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+            }
 
-.media-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid var(--color-secundario);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
-}
+            .close-media-modal {
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+            }
 
-.media-container:hover {
-    transform: rotate(5deg) scale(1.05);
-    border-color: var(--color-primario);
-}
+            #media-image {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+        }
 
-.foto-perfil, .video-perfil {
-    position: absolute;
-    top: 0;
-    left: 4;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.5s ease;
-}
+        /* Ajustes para pantallas muy altas */
+        @media (min-height: 800px) {
+            #media-image {
+                max-height: 90vh;
+            }
+        }
 
-.video-perfil {
-    opacity: 0;
-    width: 60%;
-    z-index: 1;
-    margin: 0;
-}
+        /* Ajustes para orientación horizontal en móviles */
+        @media (max-width: 768px) and (orientation: landscape) {
+            #media-image {
+                max-height: 90vh;
+            }
+        }
 
-.video-perfil.active {
-    opacity: 1;
-}
+        /* LinkedIn */
+        .redes-sociales a.linkedin {
+            background-color: #0077B5;
+        }
 
-/* Nuevos estilos para el modal de multimedia */
-.modal-media-container {
-    position: relative;
-    width: 90%;
-    height: 90%;
-    max-width: 1200px;
-    max-height: 80vh;
-    background: #000;
-    border-radius: 8px;
-    overflow: hidden;
-}
+        .track-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+        }
 
-.modal-media-container iframe,
-.modal-media-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
+        .music-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-secundario);
+            border-radius: 50%;
+            padding: 10px;
+        }
 
-/* Mantén los estilos originales solo para la foto de perfil */
-.media-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid var(--color-secundario);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease;
-}
+        .media-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
 
-/* Estilos para el visualizador de audio */
-.audio-visualizer {
-    display: flex;
-    align-items: flex-end;
-    height: 30px;
-    gap: 3px;
-    margin-left: 10px;
-}
+        .media-container:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--color-primario);
+        }
 
-.audio-bar {
-    width: 3px;
-    background-color: var(--color-secundario);
-    border-radius: 3px;
-    transition: height 0.1s ease;
-}
+        .foto-perfil,
+        .video-perfil {
+            position: absolute;
+            top: 0;
+            left: 4;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
 
-.music-player .audio-visualizer {
-    width: 100%;
-    justify-content: center;
-    margin: 10px 0;
-    height: 40px;
-}
+        .video-perfil {
+            opacity: 0;
+            width: 60%;
+            z-index: 1;
+            margin: 0;
+        }
 
-.music-player .audio-bar {
-    width: 4px;
-    background-color: white;
-}
+        .video-perfil.active {
+            opacity: 1;
+        }
 
-/* Estilos mejorados para el visualizador de audio */
-.audio-visualizer-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin: 20px 0;
-        position: relative;
-    }
+        /* Nuevos estilos para el modal de multimedia */
+        .modal-media-container {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            max-height: 80vh;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-    .speaker {
-        width: 60px;
-        height: 100px;
-        position: relative;
-        margin: 0 15px;
-        transition: transform 0.05s ease-out;
-    }
+        .modal-media-container iframe,
+        .modal-media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-    .speaker-left {
-        transform: rotateY(180deg);
-    }
+        /* Mantén los estilos originales solo para la foto de perfil */
+        .media-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--color-secundario);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
 
-    .speaker-body {
-        width: 100%;
-        height: 80px;
-        background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 
-            inset 0 0 15px rgba(0, 0, 0, 0.3),
-            0 0 20px rgba(0, 0, 0, 0.1);
-    }
+        /* Estilos para el visualizador de audio */
+        .audio-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 30px;
+            gap: 3px;
+            margin-left: 10px;
+        }
 
-    .speaker-cone {
-        width: 40px;
-        height: 40px;
-        background: radial-gradient(circle, #444, #222);
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: all 0.1s ease;
-    }
-   /* Efecto de "retumbo" (se activa con JavaScript) */
-    .speaker-rumble {
-        animation: rumble 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-    }
-    .speaker-grill {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
-        background-size: 10px 10px;
-        z-index: 1;
-    }
+        .audio-bar {
+            width: 3px;
+            background-color: var(--color-secundario);
+            border-radius: 3px;
+            transition: height 0.1s ease;
+        }
 
-    .speaker-base {
-        width: 80%;
-        height: 10px;
-        background: #333;
-        border-radius: 3px;
-        margin-top: 5px;
-    }
+        .music-player .audio-visualizer {
+            width: 100%;
+            justify-content: center;
+            margin: 10px 0;
+            height: 40px;
+        }
 
-    .audio-visualizer {
-        display: flex;
-        align-items: flex-end;
-        height: 100px;
-        gap: 4px;
-        margin: 0 10px;
-    }
+        .music-player .audio-bar {
+            width: 4px;
+            background-color: white;
+        }
 
-    .audio-bar {
-        width: 4px;
-        background-color: var(--color-secundario);
-        border-radius: 3px;
-        transition: height 0.1s ease;
-    }
+        /* Estilos mejorados para el visualizador de audio */
+        .audio-visualizer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+        }
 
-    /* Efectos psicodélicos */
-    @keyframes colorShift {
-        0% { filter: hue-rotate(0deg) brightness(1); }
-        50% { filter: hue-rotate(180deg) brightness(1.2); }
-        100% { filter: hue-rotate(360deg) brightness(1); }
-    }
+        .speaker {
+            width: 60px;
+            height: 100px;
+            position: relative;
+            margin: 0 15px;
+            transition: transform 0.05s ease-out;
+        }
 
-    .speaker-psycho {
-        animation: colorShift 5s infinite linear;
-    }
+        .speaker-left {
+            transform: rotateY(180deg);
+        }
 
-    .pulse-effect {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: radial-gradient(circle, currentColor, transparent 70%);
-        opacity: 0;
-        transform: scale(0);
-    }
+        .speaker-body {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 0, 0, 0.1);
+        }
 
-    .pulse-active {
-        animation: pulse 0.5s ease-out;
-    }
+        .speaker-cone {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #444, #222);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+        }
 
-    @keyframes pulse {
-        0% { transform: scale(0.5); opacity: 0.8; }
-        100% { transform: scale(1.5); opacity: 0; }
-    }
+        /* Efecto de "retumbo" (se activa con JavaScript) */
+        .speaker-rumble {
+            animation: rumble 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
 
+        .speaker-grill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 10px 10px;
+            z-index: 1;
+        }
+
+        .speaker-base {
+            width: 80%;
+            height: 10px;
+            background: #333;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+
+        .audio-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 100px;
+            gap: 4px;
+            margin: 0 10px;
+        }
+
+        .audio-bar {
+            width: 4px;
+            background-color: var(--color-secundario);
+            border-radius: 3px;
+            transition: height 0.1s ease;
+        }
+
+        /* Efectos psicodélicos */
+        @keyframes colorShift {
+            0% {
+                filter: hue-rotate(0deg) brightness(1);
+            }
+
+            50% {
+                filter: hue-rotate(180deg) brightness(1.2);
+            }
+
+            100% {
+                filter: hue-rotate(360deg) brightness(1);
+            }
+        }
+
+        .speaker-psycho {
+            animation: colorShift 5s infinite linear;
+        }
+
+        .pulse-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, currentColor, transparent 70%);
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .pulse-active {
+            animation: pulse 0.5s ease-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -1928,14 +1953,13 @@
             <div class="container">
                 <div class="perfil">
                     <div class="media-container">
-                        <img src="assets/images/perfil.jpg"
-                             alt="Tu foto" class="foto-perfil">
+                        <img src="assets/images/perfil.jpg" alt="Tu foto" class="foto-perfil">
                         <video class="video-perfil" loop muted playsinline>
                             <source src="assets/videos/segundo_video.mp4" type="video/mp4">
                             Tu navegador no soporta videos HTML5.
                         </video>
                     </div>
-                    
+
                     <div class="bio">
                         <h2>
                             <span id="greeting-text">¡Hola, soy victor!</span>
@@ -1948,9 +1972,13 @@
                                 </button>
                             </div>
                         </h2>
-                        <p id="bio1">Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones web y móviles dinámicas.</p>
-    <p id="bio2">A través de este portafolio, quiero compartir mis habilidades y mis capacidades para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo que podriamos crear juntos.</p>
-    <p id="bio3">Sin mas, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o simplemente compartir ideas!</p>
+                        <p id="bio1">Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones
+                            web y móviles dinámicas.</p>
+                        <p id="bio2">A través de este portafolio, quiero compartir mis habilidades y mis capacidades
+                            para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo
+                            que podriamos crear juntos.</p>
+                        <p id="bio3">Sin mas, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o
+                            simplemente compartir ideas!</p>
                         <div class="habilidades">
                             <span>JavaScript</span>
                             <span>React Native</span>
@@ -1981,8 +2009,7 @@
             <div class="proyectos-grid">
                 <div class="proyecto" data-project-id="bus-tracker">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/atuDestinoPortada.png"
-                            alt="App de Rastreo de Buses">
+                        <img src="assets/images/atuDestinoPortada.png" alt="App de Rastreo de Buses">
                         <div class="mobile-frame"></div>
                     </div>
                     <div class="proyecto-contenido">
@@ -1993,7 +2020,7 @@
                             <span class="tecnologia">Riverpod</span>
                             <span class="tecnologia">Firebase</span>
                             <span class="tecnologia">FlutterMap</span>
-                            
+
                         </div>
                         <p class="proyecto-descripcion">
                             Aplicación móvil para rastreo de buses en tiempo real con mapa interactivo. Los usuarios
@@ -2006,8 +2033,7 @@
 
                 <div class="proyecto" data-project-id="medi-schedule">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/auna/portada.jpg"
-                            alt="App de Citas Médicas">
+                        <img src="assets/images/auna/portada.jpg" alt="App de Citas Médicas">
                         <div class="mobile-frame"></div>
                     </div>
                     <div class="proyecto-contenido">
@@ -2025,7 +2051,9 @@
                             <span class="tecnologia">Jest</span>
                         </div>
                         <p class="proyecto-descripcion">
-                            La app/web Auna facilita la gestión de citas médicas. Permite agendar citas, tanto presenciales como teleconsultas, con especialistas de las clínicas Auna. También puedes ver tu historial de citas, consultar órdenes de exámenes y recetas
+                            La app/web Auna facilita la gestión de citas médicas. Permite agendar citas, tanto
+                            presenciales como teleconsultas, con especialistas de las clínicas Auna. También puedes ver
+                            tu historial de citas, consultar órdenes de exámenes y recetas
                         </p>
                         <a href="#" class="btn view-detail-btn">Ver detalles</a>
                     </div>
@@ -2033,8 +2061,7 @@
 
                 <div class="proyecto" data-project-id="enterprise-dashboard">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/viaje_seguro/portada.png"
-                            alt="Sistema Backoffice">
+                        <img src="assets/images/viaje_seguro/portada.png" alt="Sistema Backoffice">
                     </div>
                     <div class="proyecto-contenido">
                         <h3 class="proyecto-titulo">Viaje Seguro</h3>
@@ -2053,8 +2080,7 @@
 
                 <div class="proyecto" data-project-id="portal_ciudadano">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/portal/portadaPortal.png"
-                            alt="Sistema Backoffice">
+                        <img src="assets/images/portal/portadaPortal.png" alt="Sistema Backoffice">
                     </div>
                     <div class="proyecto-contenido">
                         <h3 class="proyecto-titulo">Portal Web Ciudadano</h3>
@@ -2066,7 +2092,9 @@
                             <span class="tecnologia">Postgress</span>
                         </div>
                         <p class="proyecto-descripcion">
-                            Plataforma digital da acceso al ciudadano a información y servicios relacionados con el transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y reportar incidencias relacionadas con el transporte. 
+                            Plataforma digital da acceso al ciudadano a información y servicios relacionados con el
+                            transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y
+                            reportar incidencias relacionadas con el transporte.
                         </p>
                         <a href="#" class="btn view-detail-btn">Ver detalles</a>
                     </div>
@@ -2074,8 +2102,7 @@
 
                 <div class="proyecto" data-project-id="ibk">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/ibk/portadaibk.png"
-                            alt="Sistema Backoffice">
+                        <img src="assets/images/ibk/portadaibk.png" alt="Sistema Backoffice">
                     </div>
                     <div class="proyecto-contenido">
                         <h3 class="proyecto-titulo">MicroFront Cordinacion entrega Tarjeta</h3>
@@ -2096,8 +2123,7 @@
 
                 <div class="proyecto" data-project-id="mibanco">
                     <div class="proyecto-imagen">
-                        <img src="assets/images/mibanco/portadaMibanco.png"
-                            alt="Sistema Backoffice">
+                        <img src="assets/images/mibanco/portadaMibanco.png" alt="Sistema Backoffice">
                     </div>
                     <div class="proyecto-contenido">
                         <h3 class="proyecto-titulo">MicroFront Modulo Pagos y Prestamos</h3>
@@ -2152,7 +2178,7 @@
                 <span>2. Música Relajante</span>
                 <button class="play-btn">▶</button>
             </div>
-            <div class="track" data-src="assets/audio3.mp3">
+            <div class="track" data-src="assets/pushit.mp3">
                 <span>3. Tema Épico</span>
                 <button class="play-btn">▶</button>
             </div>
@@ -2166,9 +2192,9 @@
                 </div>
                 <div class="speaker-base"></div>
             </div>
-            
+
             <div class="audio-visualizer" id="audio-visualizer"></div>
-            
+
             <div class="speaker speaker-right">
                 <div class="speaker-body">
                     <div class="speaker-grill"></div>
@@ -2178,7 +2204,7 @@
                 <div class="speaker-base"></div>
             </div>
         </div>
-        
+
         <audio id="player-audio"></audio>
     </div>
 
@@ -2186,7 +2212,8 @@
         <h2>¿Listo para trabajar juntos?</h2>
         <p>Contáctame para nuevos proyectos y colaboraciones</p>
         <div class="redes-sociales">
-            <a href="https://www.linkedin.com/in/victor-humberto-arias-caballero-a03b5934/" class="linkedin" target="_blank">
+            <a href="https://www.linkedin.com/in/victor-humberto-arias-caballero-a03b5934/" class="linkedin"
+                target="_blank">
                 <i class="fab fa-linkedin-in"></i>
             </a>
             <a href="https://wa.me/51926296519?text=Hola,%20estoy%20interesado%20en%20tu%20portafolio" class="whatsapp"
@@ -2213,11 +2240,11 @@
                     duration: "1 año",
                     role: "Desarrollador Frontend",
                     image: "assets/images/detallePortada.png",
-                    technologies: ["Flutter", "Dart", "Riverpod","FlutterMap"],
+                    technologies: ["Flutter", "Dart", "Riverpod", "FlutterMap"],
                     description: "App con Mapa interactivo que te permitira calcular tiempos y organizar tu día",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "lTAkX9Af9Nc",
@@ -2228,7 +2255,7 @@
                             id: "8cQVOzIXFP8",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "youtube",
                             id: "dC5FvScThRo",
@@ -2239,7 +2266,7 @@
                             id: "hDQr86O6Q2A",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "image",
                             url: "assets/images/estructuracarpetas.png"
@@ -2248,8 +2275,8 @@
                             type: "image",
                             url: "assets/images/architecture_diagram.jpeg"
                         },
-                        
-                       
+
+
                     ],
                     features: [
                         "Facilita planear un viaje antes de salir desde un punto A hasta un punto B",
@@ -2267,12 +2294,12 @@
                     duration: "2 años",
                     role: "Desarrollador Frontend Ionic/Angular",
                     image: "assets/images/auna/detallePortada.png",
-                    technologies: ["Ionic", "Capacitor", "Stencil","Storybook","Aws","Firebase","Android Studio","Xcode"],
-                   
+                    technologies: ["Ionic", "Capacitor", "Stencil", "Storybook", "Aws", "Firebase", "Android Studio", "Xcode"],
+
                     description: "Plataforma de gestión de citas médicas con opciones de telemedicina. Incluye búsqueda de especialistas, historial médico y recordatorios automáticos.",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "7HrJc4P8_8E",
@@ -2283,8 +2310,8 @@
                             id: "k1utRHZj3AE",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
-                        
+
+
                         {
                             type: "image",
                             url: "assets/images/auna/sample1.png"
@@ -2301,8 +2328,8 @@
                             type: "image",
                             url: "assets/images/auna/estructuracarpetas.png"
                         },
-                        
-                       
+
+
                     ],
                     features: [
                         "Agendamiento de citas en línea",
@@ -2320,11 +2347,11 @@
                     duration: "1 año",
                     role: "Desarrollador Frontend Flutter",
                     image: "assets/images/viaje_seguro/portada.png",
-                    technologies: ["Flutter", "Dart", "Riverpod","FlutterMap"],
+                    technologies: ["Flutter", "Dart", "Riverpod", "FlutterMap"],
                     description: "Aplicativo que te permite buscar Agencias y Terminales autorizados por el MTC.",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "gj019Y6N8s0",
@@ -2340,7 +2367,7 @@
                             id: "QGa7m1teoU0",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "image",
                             url: "assets/images/viaje_seguro/sample1.png"
@@ -2349,9 +2376,9 @@
                             type: "image",
                             url: "assets/images/viaje_seguro/sample2.png"
                         },
-                        
-                        
-                       
+
+
+
                     ],
                     features: [
                         "Monitorea tu viaje",
@@ -2368,17 +2395,17 @@
                     duration: "6 meses",
                     role: "Desarrollador FullStack",
                     image: "assets/images/portal/portadaPortal.png",
-                    technologies: ["Angular", "Typescript", "Sass","SpringBoot","Postgress"],
+                    technologies: ["Angular", "Typescript", "Sass", "SpringBoot", "Postgress"],
                     description: "Plataforma digital da acceso al ciudadano a información y servicios relacionados con el transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y reportar incidencias relacionadas con el transporte. ",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "cNZAAsTbrZY",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "image",
                             url: "assets/images/portal/portal_back.png"
@@ -2407,9 +2434,9 @@
                             type: "image",
                             url: "assets/images/portal/sample2.png"
                         },
-                        
-                        
-                       
+
+
+
                     ],
                     features: [
                         "Realizar pagos, solicitar información, y presentar reclamaciones.",
@@ -2421,23 +2448,23 @@
                     challenge: "En Reportes se requeria mejoras visuales que el actual plugin no soportaba",
                     solution: "Se requeria subir la version de angular y esto ocasiono imcompatibilidad con otros plugins, lo cual costo tiempo depurar"
                 },
-"ibk": {
+                "ibk": {
                     title: "MicroFront Cordinacion entrega Tarjeta",
                     client: "IBK",
                     duration: "6 meses",
                     role: "Arquitecto Frontend",
                     image: "assets/images/ibk/portadaibk.png",
-                    technologies: ["Angular", "ngRx","node", "Stencil","Tailwind","Storybook","Karma"],
+                    technologies: ["Angular", "ngRx", "node", "Stencil", "Tailwind", "Storybook", "Karma"],
                     description: "Microfront Desktop/Mobil Modulo para Coordinar entrega de Tarjeta credito a clientes",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "3XsTH3vYMJg",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "image",
                             url: "assets/images/ibk/sample1.png"
@@ -2458,37 +2485,37 @@
                             type: "image",
                             url: "assets/images/ibk/sample6.jpeg"
                         },
-                       
-                        
-                       
+
+
+
                     ],
                     features: [
                         "Registro de contacto respaldo",
                         "Seleccion de fecha y hora de entrega",
                         "Registrar o editar direccion",
                         "Registro de peticion de entrega de tarjeta",
-                        
+
                     ],
                     challenge: "Problemas con el codigo generado por tailwind, hacia conflicto cuando se colocaba en iframe",
                     solution: "Cambiar por simple css, ya que este no genera codigo extra"
                 },
-               "mibanco": {
+                "mibanco": {
                     title: "MicroFront Modulo Pagos y Prestamos",
                     client: "MiBanco",
                     duration: "6 meses",
                     role: "Desarrollador Frontend",
                     image: "assets/images/mibanco/sample5.png",
-                    technologies: ["Angular", "ngRx","node", "Stencil","Tailwind","Storybook","Karma"],
+                    technologies: ["Angular", "ngRx", "node", "Stencil", "Tailwind", "Storybook", "Karma"],
                     description: "Plataforma digital da acceso al ciudadano a información y servicios relacionados con el transporte terrestrePermite a los ciudadanos consultar información, realizar trámites, y reportar incidencias relacionadas con el transporte. ",
                     media: [
 
-                    
+
                         {
                             type: "youtube",
                             id: "KzLFOsk8VIU",
                             thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
                         },
-                        
+
                         {
                             type: "image",
                             url: "assets/images/mibanco/sample1.png"
@@ -2513,9 +2540,9 @@
                             type: "image",
                             url: "assets/images/mibanco/sample6.png"
                         },
-                       
-                        
-                       
+
+
+
                     ],
                     features: [
                         "Consulta de Prestamos",
@@ -2618,48 +2645,48 @@
                 setupMediaGallery();
 
                 // Desplazar al inicio
-                
+
             }
 
             function setupMediaGallery() {
-    const mediaModal = $('#media-modal');
-    const mediaIframe = $('#media-iframe');
-    const mediaImage = $('#media-image');
+                const mediaModal = $('#media-modal');
+                const mediaIframe = $('#media-iframe');
+                const mediaImage = $('#media-image');
 
-    $('.media-item').on('click', function() {
-        const type = $(this).data('type');
-        const src = $(this).data('src');
+                $('.media-item').on('click', function () {
+                    const type = $(this).data('type');
+                    const src = $(this).data('src');
 
-        if (type === 'youtube') {
-            mediaIframe.attr('src', src).show();
-            mediaImage.hide();
-        } else {
-            mediaImage.attr('src', src).show();
-            mediaIframe.hide();
-        }
+                    if (type === 'youtube') {
+                        mediaIframe.attr('src', src).show();
+                        mediaImage.hide();
+                    } else {
+                        mediaImage.attr('src', src).show();
+                        mediaIframe.hide();
+                    }
 
-        mediaModal.addClass('active');
-        
-        // Detener cualquier video de perfil que esté reproduciéndose
-        $('.video-perfil').each(function() {
-            this.pause();
-            $(this).removeClass('active');
-        });
-    });
+                    mediaModal.addClass('active');
 
-    $('.close-media-modal').on('click', function() {
-        mediaModal.removeClass('active');
-        mediaIframe.attr('src', ''); // Detener videos al cerrar
-    });
+                    // Detener cualquier video de perfil que esté reproduciéndose
+                    $('.video-perfil').each(function () {
+                        this.pause();
+                        $(this).removeClass('active');
+                    });
+                });
 
-    // Cerrar al hacer clic fuera del contenido
-    mediaModal.on('click', function(e) {
-        if ($(e.target).hasClass('media-modal')) {
-            mediaModal.removeClass('active');
-            mediaIframe.attr('src', '');
-        }
-    });
-}
+                $('.close-media-modal').on('click', function () {
+                    mediaModal.removeClass('active');
+                    mediaIframe.attr('src', ''); // Detener videos al cerrar
+                });
+
+                // Cerrar al hacer clic fuera del contenido
+                mediaModal.on('click', function (e) {
+                    if ($(e.target).hasClass('media-modal')) {
+                        mediaModal.removeClass('active');
+                        mediaIframe.attr('src', '');
+                    }
+                });
+            }
 
             // Manejar clic en botón "Volver"
             $('#close-detail').on('click', function () {
@@ -2733,45 +2760,45 @@
 
             function toggleLanguage() {
                 const aboutMeAudio = currentLanguage === 'es' ? $('#audio-es')[0] : $('#audio-en')[0];
-    const video = $('.video-perfil')[0];
-    const musicPlayer = $('#player-audio')[0];
-    
-    // 1. Detener audio y video de "sobre mí"
-    aboutMeAudio.pause();
-    aboutMeAudio.currentTime = 0;
-    video.pause();
-    $('.video-perfil').removeClass('active');
-    
-    // 2. Restaurar estado del audio
-    audioEnabled = false;
-    updateAudioButton();
-    
-    // 3. Manejo específico para iOS
-    if (isIOS()) {
-        // Si el playlist estaba pausado (por ser iOS y estar reproduciendo el audio de sobre mí)
-        if (wasMusicPlayingBeforeAboutMe && musicPlayer.paused) {
-            // Necesitamos una interacción del usuario para reanudar en iOS
-            $('body').one('click touchstart', function() {
-                musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
-                musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
-            });
-        }
-    } else {
-        // Para otros dispositivos, simplemente reanudamos si estaba reproduciéndose
-        if (wasMusicPlayingBeforeAboutMe) {
-            musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
-            musicPlayer.play().catch(e => console.log("Audio resume error:", e));
-        }
-    }
-    
-    // 4. Cambiar idioma
-    currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
-    currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
-    
-    // 5. Actualizar interfaz
-    updateLanguageButton();
-    applyLanguage(currentLanguage);
-    saveLanguagePreference();
+                const video = $('.video-perfil')[0];
+                const musicPlayer = $('#player-audio')[0];
+
+                // 1. Detener audio y video de "sobre mí"
+                aboutMeAudio.pause();
+                aboutMeAudio.currentTime = 0;
+                video.pause();
+                $('.video-perfil').removeClass('active');
+
+                // 2. Restaurar estado del audio
+                audioEnabled = false;
+                updateAudioButton();
+
+                // 3. Manejo específico para iOS
+                if (isIOS()) {
+                    // Si el playlist estaba pausado (por ser iOS y estar reproduciendo el audio de sobre mí)
+                    if (wasMusicPlayingBeforeAboutMe && musicPlayer.paused) {
+                        // Necesitamos una interacción del usuario para reanudar en iOS
+                        $('body').one('click touchstart', function () {
+                            musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
+                            musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                        });
+                    }
+                } else {
+                    // Para otros dispositivos, simplemente reanudamos si estaba reproduciéndose
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        musicPlayer.volume = musicVolumeBeforeAboutMe || 0.5;
+                        musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                    }
+                }
+
+                // 4. Cambiar idioma
+                currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+                currentAudioElement = document.getElementById(`audio-${currentLanguage}`);
+
+                // 5. Actualizar interfaz
+                updateLanguageButton();
+                applyLanguage(currentLanguage);
+                saveLanguagePreference();
             }
 
             function updateLanguageButton() {
@@ -2780,279 +2807,279 @@
             }
 
             function applyLanguage(lang) {
-    const translations = {
-        es: {
-            title: "Mi Portafolio Creativo",
-            subtitle: "Diseño • Desarrollo • Innovación",
-            greeting: "¡Hola, soy Victor!",
-            bio1: "Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones web y móviles dinámicas.",
-            bio2: "A través de este portafolio, quiero compartir mis habilidades y mis capacidades para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo que podríamos crear juntos.",
-            bio3: "Sin más, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o simplemente compartir ideas!",
-            filterAll: "Todas",
-            filterReact: "React js",
-            filterFlutter: "Flutter",
-            filterLaravel: "Angular",
-            filterNode: "Node",
-            cvEs: "CV Español",
-            cvEn: "CV English",
-            readyTitle: "¿Listo para trabajar juntos?",
-            readyText: "Contáctame para nuevos proyectos y colaboraciones",
-            copyright: "© 2025 Portafolio Creativo. Todos los derechos reservados.",
-            backButton: "<i class='fas fa-arrow-left'></i> Volver",
-            viewDetails: "Ver detalles"
-        },
-        en: {
-            title: "My Creative Portfolio",
-            subtitle: "Design • Development • Innovation",
-            greeting: "Hello, I'm Victor!",
-            bio1: "A passionate Frontend Developer with experience in creating dynamic web and mobile applications.",
-            bio2: "Through this portfolio, I want to share my skills and capabilities to build innovative and customized web solutions. I'd love to discuss what we could create together.",
-            bio3: "Without further ado, I invite you to explore my projects and connect if you're looking to collaborate or simply share ideas!",
-            filterAll: "All",
-            filterReact: "React js",
-            filterFlutter: "Flutter",
-            filterLaravel: "Angular",
-            filterNode: "Node",
-            cvEs: "Spanish CV",
-            cvEn: "English CV",
-            readyTitle: "Ready to work together?",
-            readyText: "Contact me for new projects and collaborations",
-            copyright: "© 2025 Creative Portfolio. All rights reserved.",
-            backButton: "<i class='fas fa-arrow-left'></i> Back",
-            viewDetails: "View details"
-        }
-    };
+                const translations = {
+                    es: {
+                        title: "Mi Portafolio Creativo",
+                        subtitle: "Diseño • Desarrollo • Innovación",
+                        greeting: "¡Hola, soy Victor!",
+                        bio1: "Un apasionado Desarrollador Frontend con experiencia en creación de aplicaciones web y móviles dinámicas.",
+                        bio2: "A través de este portafolio, quiero compartir mis habilidades y mis capacidades para construir soluciones web innovadoras y personalizadas. Me encantaría conversar sobre lo que podríamos crear juntos.",
+                        bio3: "Sin más, ¡Te invito a explorar mis proyectos y a conectar si buscas colaborar o simplemente compartir ideas!",
+                        filterAll: "Todas",
+                        filterReact: "React js",
+                        filterFlutter: "Flutter",
+                        filterLaravel: "Angular",
+                        filterNode: "Node",
+                        cvEs: "CV Español",
+                        cvEn: "CV English",
+                        readyTitle: "¿Listo para trabajar juntos?",
+                        readyText: "Contáctame para nuevos proyectos y colaboraciones",
+                        copyright: "© 2025 Portafolio Creativo. Todos los derechos reservados.",
+                        backButton: "<i class='fas fa-arrow-left'></i> Volver",
+                        viewDetails: "Ver detalles"
+                    },
+                    en: {
+                        title: "My Creative Portfolio",
+                        subtitle: "Design • Development • Innovation",
+                        greeting: "Hello, I'm Victor!",
+                        bio1: "A passionate Frontend Developer with experience in creating dynamic web and mobile applications.",
+                        bio2: "Through this portfolio, I want to share my skills and capabilities to build innovative and customized web solutions. I'd love to discuss what we could create together.",
+                        bio3: "Without further ado, I invite you to explore my projects and connect if you're looking to collaborate or simply share ideas!",
+                        filterAll: "All",
+                        filterReact: "React js",
+                        filterFlutter: "Flutter",
+                        filterLaravel: "Angular",
+                        filterNode: "Node",
+                        cvEs: "Spanish CV",
+                        cvEn: "English CV",
+                        readyTitle: "Ready to work together?",
+                        readyText: "Contact me for new projects and collaborations",
+                        copyright: "© 2025 Creative Portfolio. All rights reserved.",
+                        backButton: "<i class='fas fa-arrow-left'></i> Back",
+                        viewDetails: "View details"
+                    }
+                };
 
-    // Actualizar elementos del header
-    $('h1').text(translations[lang].title).attr('data-text', translations[lang].title);
-    $('.subtitulo').text(translations[lang].subtitle);
-    
-    // Actualizar sección "Sobre mí"
-    $('#greeting-text').text(translations[lang].greeting);
-    const bioParagraphs = $('.bio p');
-    bioParagraphs.eq(0).text(translations[lang].bio1);
-    bioParagraphs.eq(1).text(translations[lang].bio2);
-    bioParagraphs.eq(2).text(translations[lang].bio3);
-    
-    // Actualizar botones de filtro
-    $('.btn-filtro[data-tecnologia="todas"]').text(translations[lang].filterAll);
-    $('.btn-filtro[data-tecnologia="react"]').text(translations[lang].filterReact);
-    $('.btn-filtro[data-tecnologia="flutter"]').text(translations[lang].filterFlutter);
-    $('.btn-filtro[data-tecnologia="angular"]').text(translations[lang].filterLaravel);
-    $('.btn-filtro[data-tecnologia="node"]').text(translations[lang].filterNode);
-    
-    // Actualizar botones de CV
-    $('#download-cv-es').text(translations[lang].cvEs);
-    $('#download-cv-en').text(translations[lang].cvEn);
-    
-    // Actualizar footer
-    $('footer h2').text(translations[lang].readyTitle);
-    $('footer p').eq(0).text(translations[lang].readyText);
-    $('footer p').eq(1).text(translations[lang].copyright);
-    
-    // Actualizar botones de detalles y volver
-    $('.view-detail-btn').text(translations[lang].viewDetails);
-    $('#close-detail').html(translations[lang].backButton);
-    
-    // Actualizar el texto del botón de idioma
-    updateLanguageButton();
-}
-// ===== [DETECCIÓN DE iOS] =====
-function isIOS() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-           (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-}
+                // Actualizar elementos del header
+                $('h1').text(translations[lang].title).attr('data-text', translations[lang].title);
+                $('.subtitulo').text(translations[lang].subtitle);
+
+                // Actualizar sección "Sobre mí"
+                $('#greeting-text').text(translations[lang].greeting);
+                const bioParagraphs = $('.bio p');
+                bioParagraphs.eq(0).text(translations[lang].bio1);
+                bioParagraphs.eq(1).text(translations[lang].bio2);
+                bioParagraphs.eq(2).text(translations[lang].bio3);
+
+                // Actualizar botones de filtro
+                $('.btn-filtro[data-tecnologia="todas"]').text(translations[lang].filterAll);
+                $('.btn-filtro[data-tecnologia="react"]').text(translations[lang].filterReact);
+                $('.btn-filtro[data-tecnologia="flutter"]').text(translations[lang].filterFlutter);
+                $('.btn-filtro[data-tecnologia="angular"]').text(translations[lang].filterLaravel);
+                $('.btn-filtro[data-tecnologia="node"]').text(translations[lang].filterNode);
+
+                // Actualizar botones de CV
+                $('#download-cv-es').text(translations[lang].cvEs);
+                $('#download-cv-en').text(translations[lang].cvEn);
+
+                // Actualizar footer
+                $('footer h2').text(translations[lang].readyTitle);
+                $('footer p').eq(0).text(translations[lang].readyText);
+                $('footer p').eq(1).text(translations[lang].copyright);
+
+                // Actualizar botones de detalles y volver
+                $('.view-detail-btn').text(translations[lang].viewDetails);
+                $('#close-detail').html(translations[lang].backButton);
+
+                // Actualizar el texto del botón de idioma
+                updateLanguageButton();
+            }
+            // ===== [DETECCIÓN DE iOS] =====
+            function isIOS() {
+                return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            }
             // ===== [SISTEMA DE AUDIO] =====
             function initAudioSystem() {
                 $('.speaker-btn').on('click', toggleAudioPlayback);
-    $('.reset-btn').on('click', resetAudio);
+                $('.reset-btn').on('click', resetAudio);
 
-    // Configurar eventos para cuando termina el audio
-    $('#audio-es, #audio-en').on('ended', function() {
-        audioEnabled = false;
-        updateAudioButton();
-        $('.video-perfil').removeClass('active');
-        $('.video-perfil')[0].pause();
-        
-        // Restaurar playlist si estaba reproduciéndose
-        if (wasMusicPlayingBeforeAboutMe) {
-            const musicPlayer = $('#player-audio')[0];
-            musicPlayer.volume = musicVolumeBeforeAboutMe;
-            if (isIOS()) {
-                $('body').one('click touchstart', function() {
-                    musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                // Configurar eventos para cuando termina el audio
+                $('#audio-es, #audio-en').on('ended', function () {
+                    audioEnabled = false;
+                    updateAudioButton();
+                    $('.video-perfil').removeClass('active');
+                    $('.video-perfil')[0].pause();
+
+                    // Restaurar playlist si estaba reproduciéndose
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        const musicPlayer = $('#player-audio')[0];
+                        musicPlayer.volume = musicVolumeBeforeAboutMe;
+                        if (isIOS()) {
+                            $('body').one('click touchstart', function () {
+                                musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                            });
+                        } else {
+                            musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                        }
+                    }
                 });
-            } else {
-                musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
             }
-        }
-    });
-}
-// Variables para control de estado
-let wasMusicPlayingBeforeAboutMe = false;
-let musicVolumeBeforeAboutMe = 0.5;
-function resumePlaylist() {
-    const musicPlayer = $('#player-audio')[0];
-    if (musicPlayer) {
-        musicPlayer.volume = musicVolumeBeforeAboutMe;
-        musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
-    }
-}
+            // Variables para control de estado
+            let wasMusicPlayingBeforeAboutMe = false;
+            let musicVolumeBeforeAboutMe = 0.5;
+            function resumePlaylist() {
+                const musicPlayer = $('#player-audio')[0];
+                if (musicPlayer) {
+                    musicPlayer.volume = musicVolumeBeforeAboutMe;
+                    musicPlayer.play().catch(e => console.log("Error al reanudar playlist:", e));
+                }
+            }
 
             // ===== [CONTROL DE VOLÚMENES] =====
             let musicVolume = 0.5;
 
             function lowerMusicVolume() {
-    const musicPlayer = $('#player-audio')[0];
-    musicVolume = musicPlayer.volume; // Guardamos el volumen actual
-    musicPlayer.volume = 0.1; // Reducimos a sólo 10% del volumen (antes era 0.2 - 20%)
-}
-
-function restoreMusicVolume() {
-    const musicPlayer = $('#player-audio')[0];
-    if (musicPlayer && musicVolume !== undefined) {
-        musicPlayer.volume = musicVolume; // Restaura el volumen original del playlist
-    }
-}
-
-function toggleAudioPlayback() {
-    const aboutMeAudio = currentLanguage === 'es' ? $('#audio-es')[0] : $('#audio-en')[0];
-    const video = $('.video-perfil')[0];
-    const musicPlayer = $('#player-audio')[0];
-    
-    aboutMeAudio.volume = 1.0;
-    
-    if (aboutMeAudio.paused) {
-        // Guardar estado del playlist antes de cambiar
-        wasMusicPlayingBeforeAboutMe = !musicPlayer.paused;
-        musicVolumeBeforeAboutMe = musicPlayer.volume;
-        
-        // Mostrar video
-        $('.video-perfil').addClass('active');
-        
-        // Comportamiento específico para iOS
-        if (isIOS()) {
-            // En iOS debemos pausar el playlist completamente
-            if (!musicPlayer.paused) {
-                musicPlayer.pause();
+                const musicPlayer = $('#player-audio')[0];
+                musicVolume = musicPlayer.volume; // Guardamos el volumen actual
+                musicPlayer.volume = 0.1; // Reducimos a sólo 10% del volumen (antes era 0.2 - 20%)
             }
-            
-            // Reproducir audio y video dentro de un gesto del usuario
-            $('body').one('click touchstart', function() {
-                video.currentTime = 0;
-                video.play().catch(e => console.log("iOS video play error:", e));
-                aboutMeAudio.play()
-                    .then(() => {
-                        audioEnabled = true;
-                        updateAudioButton();
-                    })
-                    .catch(error => {
-                        console.error("iOS audio play error:", error);
-                        $('.video-perfil').removeClass('active');
-                        // Restaurar playlist si falla
-                        if (wasMusicPlayingBeforeAboutMe) {
-                            musicPlayer.volume = musicVolumeBeforeAboutMe;
-                            musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+
+            function restoreMusicVolume() {
+                const musicPlayer = $('#player-audio')[0];
+                if (musicPlayer && musicVolume !== undefined) {
+                    musicPlayer.volume = musicVolume; // Restaura el volumen original del playlist
+                }
+            }
+
+            function toggleAudioPlayback() {
+                const aboutMeAudio = currentLanguage === 'es' ? $('#audio-es')[0] : $('#audio-en')[0];
+                const video = $('.video-perfil')[0];
+                const musicPlayer = $('#player-audio')[0];
+
+                aboutMeAudio.volume = 1.0;
+
+                if (aboutMeAudio.paused) {
+                    // Guardar estado del playlist antes de cambiar
+                    wasMusicPlayingBeforeAboutMe = !musicPlayer.paused;
+                    musicVolumeBeforeAboutMe = musicPlayer.volume;
+
+                    // Mostrar video
+                    $('.video-perfil').addClass('active');
+
+                    // Comportamiento específico para iOS
+                    if (isIOS()) {
+                        // En iOS debemos pausar el playlist completamente
+                        if (!musicPlayer.paused) {
+                            musicPlayer.pause();
                         }
-                    });
-            });
-        } else {
-            // Para otros dispositivos, solo bajar volumen del playlist
-            if (!musicPlayer.paused) {
-                musicPlayer.volume = 0.1;
-            }
-            
-            // Reproducir normalmente
-            video.currentTime = 0;
-            video.play().catch(e => console.log("Video play error:", e));
-            aboutMeAudio.play()
-                .then(() => {
-                    audioEnabled = true;
-                    updateAudioButton();
-                })
-                .catch(error => {
-                    console.error("Audio play error:", error);
-                    $('.video-perfil').removeClass('active');
-                    // Restaurar playlist si falla
-                    if (wasMusicPlayingBeforeAboutMe) {
-                        musicPlayer.volume = musicVolumeBeforeAboutMe;
-                        musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+
+                        // Reproducir audio y video dentro de un gesto del usuario
+                        $('body').one('click touchstart', function () {
+                            video.currentTime = 0;
+                            video.play().catch(e => console.log("iOS video play error:", e));
+                            aboutMeAudio.play()
+                                .then(() => {
+                                    audioEnabled = true;
+                                    updateAudioButton();
+                                })
+                                .catch(error => {
+                                    console.error("iOS audio play error:", error);
+                                    $('.video-perfil').removeClass('active');
+                                    // Restaurar playlist si falla
+                                    if (wasMusicPlayingBeforeAboutMe) {
+                                        musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                        musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                                    }
+                                });
+                        });
+                    } else {
+                        // Para otros dispositivos, solo bajar volumen del playlist
+                        if (!musicPlayer.paused) {
+                            musicPlayer.volume = 0.1;
+                        }
+
+                        // Reproducir normalmente
+                        video.currentTime = 0;
+                        video.play().catch(e => console.log("Video play error:", e));
+                        aboutMeAudio.play()
+                            .then(() => {
+                                audioEnabled = true;
+                                updateAudioButton();
+                            })
+                            .catch(error => {
+                                console.error("Audio play error:", error);
+                                $('.video-perfil').removeClass('active');
+                                // Restaurar playlist si falla
+                                if (wasMusicPlayingBeforeAboutMe) {
+                                    musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                    musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                                }
+                            });
                     }
-                });
-        }
-    } else {
-        // Pausar audio de "sobre mí"
-        aboutMeAudio.pause();
-        aboutMeAudio.currentTime = 0;
-        video.pause();
-        $('.video-perfil').removeClass('active');
-        
-        // Restaurar playlist según dispositivo
-        if (wasMusicPlayingBeforeAboutMe) {
-            if (isIOS()) {
-                // En iOS necesitamos interacción del usuario para reanudar
-                $('body').one('click touchstart', function() {
-                    musicPlayer.volume = musicVolumeBeforeAboutMe;
-                    musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
-                });
-            } else {
-                // Otros dispositivos pueden reanudar directamente
-                musicPlayer.volume = musicVolumeBeforeAboutMe;
-                musicPlayer.play().catch(e => console.log("Audio resume error:", e));
-            }
-        }
-        
-        audioEnabled = false;
-        updateAudioButton();
-    }
-}
+                } else {
+                    // Pausar audio de "sobre mí"
+                    aboutMeAudio.pause();
+                    aboutMeAudio.currentTime = 0;
+                    video.pause();
+                    $('.video-perfil').removeClass('active');
 
-// Añade este evento para cuando termine el audio
-$('#audio-es, #audio-en').on('ended', function() {
-    audioEnabled = false;
-    updateAudioButton();
-    $('.video-perfil').removeClass('active');
-    $('.video-perfil')[0].pause();
-    
-    // Solo reanudar el playlist si estaba reproduciéndose antes
-    if (wasMusicPlayingBeforeAboutMe) {
-        if (isIOS()) {
-            $('body').one('click touchstart', function() {
-                resumePlaylist();
-            });
-        } else {
-            resumePlaylist();
-        }
-    }
-});
+                    // Restaurar playlist según dispositivo
+                    if (wasMusicPlayingBeforeAboutMe) {
+                        if (isIOS()) {
+                            // En iOS necesitamos interacción del usuario para reanudar
+                            $('body').one('click touchstart', function () {
+                                musicPlayer.volume = musicVolumeBeforeAboutMe;
+                                musicPlayer.play().catch(e => console.log("iOS audio resume error:", e));
+                            });
+                        } else {
+                            // Otros dispositivos pueden reanudar directamente
+                            musicPlayer.volume = musicVolumeBeforeAboutMe;
+                            musicPlayer.play().catch(e => console.log("Audio resume error:", e));
+                        }
+                    }
 
-function resetAudio() {
-    if (!currentAudioElement) return;
-
-    currentAudioElement.currentTime = 0;
-    if (!audioEnabled) {
-        // Para iOS, necesitamos asegurarnos de que el reset ocurra dentro de un gesto del usuario
-        if (isIOS()) {
-            $('body').one('click touchstart', function() {
-                currentAudioElement.play()
-                    .then(() => {
-                        audioEnabled = true;
-                        updateAudioButton();
-                    })
-                    .catch(error => {
-                        console.error("Error en iOS al resetear audio:", error);
-                    });
-            });
-        } else {
-            currentAudioElement.play()
-                .then(() => {
-                    audioEnabled = true;
+                    audioEnabled = false;
                     updateAudioButton();
-                });
-        }
-    }
-    updateAudioButton();
-}
+                }
+            }
+
+            // Añade este evento para cuando termine el audio
+            $('#audio-es, #audio-en').on('ended', function () {
+                audioEnabled = false;
+                updateAudioButton();
+                $('.video-perfil').removeClass('active');
+                $('.video-perfil')[0].pause();
+
+                // Solo reanudar el playlist si estaba reproduciéndose antes
+                if (wasMusicPlayingBeforeAboutMe) {
+                    if (isIOS()) {
+                        $('body').one('click touchstart', function () {
+                            resumePlaylist();
+                        });
+                    } else {
+                        resumePlaylist();
+                    }
+                }
+            });
+
+            function resetAudio() {
+                if (!currentAudioElement) return;
+
+                currentAudioElement.currentTime = 0;
+                if (!audioEnabled) {
+                    // Para iOS, necesitamos asegurarnos de que el reset ocurra dentro de un gesto del usuario
+                    if (isIOS()) {
+                        $('body').one('click touchstart', function () {
+                            currentAudioElement.play()
+                                .then(() => {
+                                    audioEnabled = true;
+                                    updateAudioButton();
+                                })
+                                .catch(error => {
+                                    console.error("Error en iOS al resetear audio:", error);
+                                });
+                        });
+                    } else {
+                        currentAudioElement.play()
+                            .then(() => {
+                                audioEnabled = true;
+                                updateAudioButton();
+                            });
+                    }
+                }
+                updateAudioButton();
+            }
 
             function handleAudioEnd() {
                 audioEnabled = false;
@@ -3219,233 +3246,229 @@ function resetAudio() {
             $('.music-player').on('mouseenter', function () {
                 $(this).css('transform', 'translateX(0)');
             });
-        });
 
-        function toggleMusicPlayer(show) {
-            const player = document.querySelector('.music-player');
-            player.style.transform = show ? 'translateX(0)' : 'translateX(200px)';
-        }
+            function toggleMusicPlayer(show) {
+                const player = document.querySelector('.music-player');
+                player.style.transform = show ? 'translateX(0)' : 'translateX(200px)';
+            }
 
-        function setupMusicPlayer() {
-            const player = $('.music-player');
-            const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            function setupMusicPlayer() {
+                const player = $('.music-player');
+                const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-            if (!isTouch) {
-                // Comportamiento para desktop (hover)
-                player.on('mouseenter', function () {
-                    $(this).css('transform', 'translateX(0)');
-                });
+                if (!isTouch) {
+                    // Comportamiento para desktop (hover)
+                    player.on('mouseenter', function () {
+                        $(this).css('transform', 'translateX(0)');
+                    });
 
-                player.on('mouseleave', function () {
-                    $(this).css('transform', 'translateX(200px)');
-                });
-            } else {
-                // Comportamiento para móvil (gestos táctiles)
-                let touchStartX = 0;
-                let playerVisible = false;
+                    player.on('mouseleave', function () {
+                        $(this).css('transform', 'translateX(200px)');
+                    });
+                } else {
+                    // Comportamiento para móvil (gestos táctiles)
+                    let touchStartX = 0;
+                    let playerVisible = false;
 
-                player.on('touchstart', function (e) {
-                    touchStartX = e.originalEvent.touches[0].clientX;
-                }, { passive: true });
+                    player.on('touchstart', function (e) {
+                        touchStartX = e.originalEvent.touches[0].clientX;
+                    }, { passive: true });
 
-                player.on('touchend', function (e) {
-                    const touchEndX = e.originalEvent.changedTouches[0].clientX;
+                    player.on('touchend', function (e) {
+                        const touchEndX = e.originalEvent.changedTouches[0].clientX;
 
-                    // Swipe izquierda (mostrar)
-                    if (touchStartX - touchEndX > 50 && !playerVisible) {
-                        player.css('transform', 'translateX(0)');
-                        playerVisible = true;
-                    }
-                    // Swipe derecha (ocultar)
-                    else if (touchEndX - touchStartX > 50 && playerVisible) {
+                        // Swipe izquierda (mostrar)
+                        if (touchStartX - touchEndX > 50 && !playerVisible) {
+                            player.css('transform', 'translateX(0)');
+                            playerVisible = true;
+                        }
+                        // Swipe derecha (ocultar)
+                        else if (touchEndX - touchStartX > 50 && playerVisible) {
+                            player.css('transform', 'translateX(200px)');
+                            playerVisible = false;
+                        }
+                    }, { passive: true });
+
+                    // Cerrar con el botón X
+                    $('.player-close-btn').on('click', function () {
                         player.css('transform', 'translateX(200px)');
                         playerVisible = false;
-                    }
-                }, { passive: true });
-
-                // Cerrar con el botón X
-                $('.player-close-btn').on('click', function () {
-                    player.css('transform', 'translateX(200px)');
-                    playerVisible = false;
-                });
-            }
-        }
-
-        // Inicializar el reproductor
-        setupMusicPlayer();
-
-        // Configurar el visualizador de audio
-
-        function setupAudioVisualizer() {
-    const visualizer = document.getElementById('audio-visualizer');
-    const player = document.getElementById('player-audio');
-    const speakers = document.querySelectorAll('.speaker');
-    const speakerBodies = document.querySelectorAll('.speaker-body');
-    const pulseEffects = document.querySelectorAll('.pulse-effect');
-    
-    // Crear 30 barras para el visualizador
-    for (let i = 0; i < 30; i++) {
-        const bar = document.createElement('div');
-        bar.className = 'audio-bar';
-        bar.style.height = '2px';
-        visualizer.appendChild(bar);
-    }
-    
-    const bars = visualizer.querySelectorAll('.audio-bar');
-    
-    // Crear contexto de audio
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioContext = new AudioContext();
-    const analyser = audioContext.createAnalyser();
-    const source = audioContext.createMediaElementSource(player);
-    
-    source.connect(analyser);
-    analyser.connect(audioContext.destination);
-    analyser.fftSize = 256; // Más bandas de frecuencia para mejor detección de bajos
-    
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    
-    // Variables para seguimiento de bajos
-    let bassHistory = [];
-    const bassThreshold = 0.6;
-    let lastPulseTime = 0;
-    
-    function animateBars() {
-        if (player.paused) {
-            // Efecto de "standby" cuando está pausado
-            bars.forEach((bar, i) => {
-                const randomHeight = Math.random() * 5 + 2;
-                bar.style.height = `${randomHeight}px`;
-                bar.style.opacity = '0.6';
-            });
-            
-            // Quitar efectos psicodélicos cuando está pausado
-            speakerBodies.forEach(body => {
-                body.classList.remove('speaker-psycho');
-            });
-        } else {
-            // Animar con los datos del audio
-            analyser.getByteFrequencyData(dataArray);
-            
-            // Calcular niveles de frecuencia (bajos, medios, agudos)
-            const bassStart = 0;
-            const bassEnd = 10;
-            const midStart = 11;
-            const midEnd = 50;
-            const highStart = 51;
-            const highEnd = 100;
-            
-            let bassSum = 0;
-            let midSum = 0;
-            let highSum = 0;
-            
-            for (let i = bassStart; i < bassEnd; i++) {
-                bassSum += dataArray[i];
-            }
-            
-            for (let i = midStart; i < midEnd; i++) {
-                midSum += dataArray[i];
-            }
-            
-            for (let i = highStart; i < highEnd; i++) {
-                highSum += dataArray[i];
-            }
-            
-            const bassAvg = bassSum / (bassEnd - bassStart);
-            const midAvg = midSum / (midEnd - midStart);
-            const highAvg = highSum / (highEnd - highStart);
-            
-            // Normalizar valores (0-100)
-            const bassLevel = bassAvg / 255;
-            const midLevel = midAvg / 255;
-            const highLevel = highAvg / 255;
-            
-            // Añadir a historial de bajos
-            bassHistory.push(bassLevel);
-            if (bassHistory.length > 10) bassHistory.shift();
-            
-            // Calcular promedio de bajos recientes
-            const recentBass = bassHistory.reduce((a, b) => a + b, 0) / bassHistory.length;
-            
-            // Activar efectos psicodélicos cuando hay muchos bajos
-            if (recentBass > bassThreshold) {
-                speakerBodies.forEach(body => {
-                    body.classList.add('speaker-psycho');
-                    
-                    // Cambiar colores aleatorios
-                    const hue1 = Math.floor(Math.random() * 360);
-                    const hue2 = (hue1 + 120) % 360;
-                    body.style.background = `linear-gradient(135deg, hsl(${hue1}, 100%, 50%), hsl(${hue2}, 100%, 50%)`;
-                });
-            } else {
-                speakerBodies.forEach(body => {
-                    body.classList.remove('speaker-psycho');
-                    body.style.background = `linear-gradient(135deg, var(--color-primario), var(--color-secundario))`;
-                });
-            }
-            
-            // Efecto de pulso en los parlantes con los bajos
-            const currentTime = Date.now();
-            if (bassLevel > 0.7 && currentTime - lastPulseTime > 300) {
-                pulseEffects.forEach(pulse => {
-                    pulse.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                    pulse.classList.add('pulse-active');
-                    setTimeout(() => {
-                        pulse.classList.remove('pulse-active');
-                    }, 500);
-                });
-                lastPulseTime = currentTime;
-            }
-            
-            // Mover los parlantes con el ritmo
-            speakers.forEach(speaker => {
-                const moveX = (Math.random() - 0.5) * bassLevel * 5;
-                const moveY = (Math.random() - 0.5) * bassLevel * 3;
-                speaker.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-            
-            // Animar las barras del visualizador
-            bars.forEach((bar, i) => {
-                // Distribuir las frecuencias en las barras
-                let value;
-                if (i < 10) {
-                    // Primeras 10 barras: bajos
-                    value = dataArray[Math.floor(i * 1.5)] / 5 || 2;
-                    bar.style.backgroundColor = `hsl(${200 + bassLevel * 60}, 100%, 50%)`;
-                } else if (i < 20) {
-                    // Siguientes 10 barras: medios
-                    value = dataArray[Math.floor(15 + (i-10) * 3)] / 4 || 2;
-                    bar.style.backgroundColor = `hsl(${100 + midLevel * 80}, 100%, 50%)`;
-                } else {
-                    // Últimas 10 barras: agudos
-                    value = dataArray[Math.floor(45 + (i-20) * 5)] / 3 || 2;
-                    bar.style.backgroundColor = `hsl(${0 + highLevel * 120}, 100%, 50%)`;
+                    });
                 }
-                
-                bar.style.height = `${value * 2}px`;
-                bar.style.opacity = '1';
-            });
-        }
-        
-        requestAnimationFrame(animateBars);
-    }
-    
-    // Iniciar animación
-    animateBars();
-    
-    // Manejar el contexto de audio al interactuar con el reproductor
-    player.addEventListener('play', () => {
-        if (audioContext.state === 'suspended') {
-            audioContext.resume();
-        }
-    });
-}
+            }
 
-// Llamar a la función después de que se cargue el DOM
-$(document).ready(function() {
-    setupAudioVisualizer();
-});
+            // Inicializar el reproductor
+            setupMusicPlayer();
+
+            // Configurar el visualizador de audio
+
+            function setupAudioVisualizer() {
+                const visualizer = document.getElementById('audio-visualizer');
+                const player = document.getElementById('player-audio');
+                const speakers = document.querySelectorAll('.speaker');
+                const speakerBodies = document.querySelectorAll('.speaker-body');
+                const pulseEffects = document.querySelectorAll('.pulse-effect');
+
+                // Crear 30 barras para el visualizador
+                for (let i = 0; i < 30; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'audio-bar';
+                    bar.style.height = '2px';
+                    visualizer.appendChild(bar);
+                }
+
+                const bars = visualizer.querySelectorAll('.audio-bar');
+
+                // Crear contexto de audio
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const audioContext = new AudioContext();
+                const analyser = audioContext.createAnalyser();
+                const source = audioContext.createMediaElementSource(player);
+
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                analyser.fftSize = 256; // Más bandas de frecuencia para mejor detección de bajos
+
+                const bufferLength = analyser.frequencyBinCount;
+                const dataArray = new Uint8Array(bufferLength);
+
+                // Variables para seguimiento de bajos
+                let bassHistory = [];
+                const bassThreshold = 0.6;
+                let lastPulseTime = 0;
+
+                function animateBars() {
+                    if (player.paused) {
+                        // Efecto de "standby" cuando está pausado
+                        bars.forEach((bar, i) => {
+                            const randomHeight = Math.random() * 5 + 2;
+                            bar.style.height = `${randomHeight}px`;
+                            bar.style.opacity = '0.6';
+                        });
+
+                        // Quitar efectos psicodélicos cuando está pausado
+                        speakerBodies.forEach(body => {
+                            body.classList.remove('speaker-psycho');
+                        });
+                    } else {
+                        // Animar con los datos del audio
+                        analyser.getByteFrequencyData(dataArray);
+
+                        // Calcular niveles de frecuencia (bajos, medios, agudos)
+                        const bassStart = 0;
+                        const bassEnd = 10;
+                        const midStart = 11;
+                        const midEnd = 50;
+                        const highStart = 51;
+                        const highEnd = 100;
+
+                        let bassSum = 0;
+                        let midSum = 0;
+                        let highSum = 0;
+
+                        for (let i = bassStart; i < bassEnd; i++) {
+                            bassSum += dataArray[i];
+                        }
+
+                        for (let i = midStart; i < midEnd; i++) {
+                            midSum += dataArray[i];
+                        }
+
+                        for (let i = highStart; i < highEnd; i++) {
+                            highSum += dataArray[i];
+                        }
+
+                        const bassAvg = bassSum / (bassEnd - bassStart);
+                        const midAvg = midSum / (midEnd - midStart);
+                        const highAvg = highSum / (highEnd - highStart);
+
+                        // Normalizar valores (0-100)
+                        const bassLevel = bassAvg / 255;
+                        const midLevel = midAvg / 255;
+                        const highLevel = highAvg / 255;
+
+                        // Añadir a historial de bajos
+                        bassHistory.push(bassLevel);
+                        if (bassHistory.length > 10) bassHistory.shift();
+
+                        // Calcular promedio de bajos recientes
+                        const recentBass = bassHistory.reduce((a, b) => a + b, 0) / bassHistory.length;
+
+                        // Activar efectos psicodélicos cuando hay muchos bajos
+                        if (recentBass > bassThreshold) {
+                            speakerBodies.forEach(body => {
+                                body.classList.add('speaker-psycho');
+
+                                // Cambiar colores aleatorios
+                                const hue1 = Math.floor(Math.random() * 360);
+                                const hue2 = (hue1 + 120) % 360;
+                                body.style.background = `linear-gradient(135deg, hsl(${hue1}, 100%, 50%), hsl(${hue2}, 100%, 50%)`;
+                            });
+                        } else {
+                            speakerBodies.forEach(body => {
+                                body.classList.remove('speaker-psycho');
+                                body.style.background = `linear-gradient(135deg, var(--color-primario), var(--color-secundario))`;
+                            });
+                        }
+
+                        // Efecto de pulso en los parlantes con los bajos
+                        const currentTime = Date.now();
+                        if (bassLevel > 0.7 && currentTime - lastPulseTime > 300) {
+                            pulseEffects.forEach(pulse => {
+                                pulse.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                                pulse.classList.add('pulse-active');
+                                setTimeout(() => {
+                                    pulse.classList.remove('pulse-active');
+                                }, 500);
+                            });
+                            lastPulseTime = currentTime;
+                        }
+
+                        // Mover los parlantes con el ritmo
+                        speakers.forEach(speaker => {
+                            const moveX = (Math.random() - 0.5) * bassLevel * 5;
+                            const moveY = (Math.random() - 0.5) * bassLevel * 3;
+                            speaker.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                        });
+
+                        // Animar las barras del visualizador
+                        bars.forEach((bar, i) => {
+                            // Distribuir las frecuencias en las barras
+                            let value;
+                            if (i < 10) {
+                                // Primeras 10 barras: bajos
+                                value = dataArray[Math.floor(i * 1.5)] / 5 || 2;
+                                bar.style.backgroundColor = `hsl(${200 + bassLevel * 60}, 100%, 50%)`;
+                            } else if (i < 20) {
+                                // Siguientes 10 barras: medios
+                                value = dataArray[Math.floor(15 + (i - 10) * 3)] / 4 || 2;
+                                bar.style.backgroundColor = `hsl(${100 + midLevel * 80}, 100%, 50%)`;
+                            } else {
+                                // Últimas 10 barras: agudos
+                                value = dataArray[Math.floor(45 + (i - 20) * 5)] / 3 || 2;
+                                bar.style.backgroundColor = `hsl(${0 + highLevel * 120}, 100%, 50%)`;
+                            }
+
+                            bar.style.height = `${value * 2}px`;
+                            bar.style.opacity = '1';
+                        });
+                    }
+
+                    requestAnimationFrame(animateBars);
+                }
+
+                // Iniciar animación
+                animateBars();
+
+                // Manejar el contexto de audio al interactuar con el reproductor
+                player.addEventListener('play', () => {
+                    if (audioContext.state === 'suspended') {
+                        audioContext.resume();
+                    }
+                });
+            }
+            setupAudioVisualizer();
+        });
 
     </script>
 </body>
