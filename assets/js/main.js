@@ -334,7 +334,7 @@
                     duration: "6 meses",
                     role: "Desarrollador Frontend",
                     image: "assets/images/auna_web/portalAunaWeb.png",
-                    technologies: ["ReactJs", "Nose", "Sass", "Html", "Strapi"],
+                    technologies: ["Reactjs", "Nose", "Sass", "Html", "Strapi"],
                     description: " Este Portal ofrece diversos servicios y programas para el cuidado de la salud, incluyendo teleconsultas, chequeos preventivos, y atención médica en hospitales y clínicas",
                     media: [
 
