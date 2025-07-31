@@ -333,7 +333,7 @@
                     client: "Auna",
                     duration: "6 meses",
                     role: "Desarrollador Frontend",
-                    image: "assets/images/auna_web/portalAunaWeb.png",
+                    image: "assets/images/auna_web/portadaAunaWeb.png",
                     technologies: ["Reactjs", "Nose", "Sass", "Html", "Strapi"],
                     description: " Este Portal ofrece diversos servicios y programas para el cuidado de la salud, incluyendo teleconsultas, chequeos preventivos, y atención médica en hospitales y clínicas",
                     media: [
@@ -374,6 +374,120 @@
                             type: "image",
                             url: "assets/images/auna_web/code_front.png"
                         },
+
+
+
+                    ],
+                    features: [
+                        "Centros de Bienestar",
+                        "Farmauna",
+                        "Hospitales y Clínicas",
+                        "Laboratorios Auna",
+                        "Citas en linea"
+                    ],
+                    challenge: "En Mobile se necesitaba una Estructura distinta a responsive en muchas partes del Portal",
+                    solution: "Refactor de las paginas, en funcion del figma propuesto"
+                },
+                "ccprimavera": {
+                    title: "Sistema de Tesoreria",
+                    client: "Centro Comercial Primavera",
+                    duration: "2 meses",
+                    role: "Desarrollador FullStack",
+                    image: "assets/images/ccprimavera/sample6.png",
+                    technologies: ["Reactjs", "Nextjs", "Tailwind", "Css", "Html","Postgress","Prisma"],
+                    description: "Este sistema fue desarrollado para el Centro Comercial Primavera, el cual es un centro comercial que cuenta con una gran cantidad de tiendas y restaurantes. El sistema fue desarrollado para el control de deudas, ingresos, egresos, reportes, etc.",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "gy1tEeJ96fI",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                      
+
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample2.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample3.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample4.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample5.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/ccprimavera/sample6.png"
+                        },
+
+
+
+                    ],
+                    features: [
+                        "Registro de deudas",
+                        "Registro de ingresos",
+                        "Registro de egresos",
+                        "Reportes de ingresos, egresos, deudas, Arqueo de caja",
+                        "Respaldo de datos"
+                    ],
+                    challenge: "Restricciones de acceso y Privilegios de usuario",
+                    solution: "Implementacion de permisos de usuario y acceso a modulos"
+                },
+
+                "restaurante19": {
+                    title: "Aplicativo movil de Impresion",
+                    client: "Restaurante19",
+                    duration: "2 meses",
+                    role: "Desarrollador FullStack",
+                    image: "assets/images/restaurante19/sample1.png",
+                    technologies: ["Reactjs", "Nextjs", "Tailwind", "Css", "Html","Postgress","Prisma"],
+                    description: "Aplicativo movil para impresion de Precuentas, Boletas, Facturas, Comandas. Exclusivo para clientes que solo usan su celular para registar e imprimir sus pedidos y emision de comprobantes",
+                    media: [
+
+
+                        {
+                            type: "youtube",
+                            id: "6tDZ8xnwbO0",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+                        {
+                            type: "youtube",
+                            id: "vpJ9vOB_wdI",
+                            thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+                        },
+
+                        {
+                            type: "image",
+                            url: "assets/images/restaurante19/sample1.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/restaurante19/sample2.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/restaurante19/sample3.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/restaurante19/sample4.png"
+                        },
+                        {
+                            type: "image",
+                            url: "assets/images/restaurante19/sample5.png"
+                        },
+                       
 
 
 

@@ -1897,75 +1897,6 @@
                 opacity: 0;
             }
         }
-
-        /* Estilos para el reproductor de video */
-.video-player {
-    position: fixed;
-    bottom: 100px;
-    right: 280px;
-    width: 320px;
-    height: 180px;
-    background: #000;
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    transform: translateY(0);
-}
-
-.video-player.hidden {
-    transform: translateY(200px);
-}
-
-.video-player video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.video-toggle-btn {
-    position: fixed;
-    bottom: 290px;
-    right: 280px;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.video-toggle-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
-}
-
-body.dark-mode .video-toggle-btn {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Ajustes para móviles */
-@media (max-width: 768px) {
-    .video-player {
-        right: 20px;
-        bottom: 180px;
-        width: 200px;
-        height: 120px;
-    }
-    
-    .video-toggle-btn {
-        right: 20px;
-        bottom: 310px;
-    }
-}
     </style>
 </head>
 
@@ -2298,17 +2229,7 @@ body.dark-mode .video-toggle-btn {
         </div>
         <p>© 2025 Portafolio Creativo. Todos los derechos reservados.</p>
     </footer>
-<!-- Reproductor de video -->
-<div class="video-player hidden">
-    <video id="video-track" muted loop playsinline>
-        <!-- Las fuentes de video se cargarán dinámicamente -->
-    </video>
-</div>
 
-<!-- Botón para mostrar/ocultar video -->
-<button id="video-toggle" class="video-toggle-btn" title="Mostrar/Ocultar video">
-    <i class="fas fa-video"></i>
-</button>
     <script>
         $(document).ready(function () {
             // Datos de los proyectos
@@ -3546,105 +3467,7 @@ body.dark-mode .video-toggle-btn {
                     }
                 });
             }
-            
-
-
-
-            // Variables para control de video
-let videoPlayer = document.getElementById('video-track');
-let videoContainer = document.querySelector('.video-player');
-let videoToggleBtn = document.getElementById('video-toggle');
-let isVideoVisible = false;
-const videoSources = [
-    'assets/videos/video1.mp4',
-    'assets/videos/video2.mp4',
-    'assets/videos/video3.mp4'
-];
-
-// Precargar videos
-function preloadVideos() {
-    videoSources.forEach(src => {
-        const video = document.createElement('video');
-        video.src = src;
-        video.load();
-    });
-}
-
-// Inicializar reproductor de video
-function initVideoPlayer() {
-    // Precargar videos
-    preloadVideos();
-    
-    // Configurar eventos del botón de video
-    videoToggleBtn.addEventListener('click', toggleVideoVisibility);
-    
-    // Sincronizar video con música
-    player.addEventListener('play', syncVideoWithMusic);
-    player.addEventListener('pause', () => {
-        if (videoPlayer) videoPlayer.pause();
-    });
-    player.addEventListener('ended', changeVideoTrack);
-}
-
-// Sincronizar video con la música actual
-function syncVideoWithMusic() {
-    if (currentTrackIndex >= 0 && currentTrackIndex < videoSources.length) {
-        videoPlayer.src = videoSources[currentTrackIndex];
-        videoPlayer.currentTime = player.currentTime % videoPlayer.duration;
-        if (!player.paused) {
-            videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
-        }
-    }
-}
-
-// Cambiar video cuando cambia la canción
-function changeVideoTrack() {
-    videoPlayer.src = videoSources[currentTrackIndex];
-    videoPlayer.currentTime = 0;
-    if (!player.paused) {
-        videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
-    }
-    // Resetear visibilidad del video al cambiar canción
-    isVideoVisible = false;
-    videoContainer.classList.add('hidden');
-    videoToggleBtn.innerHTML = '<i class="fas fa-video"></i>';
-}
-
-// Mostrar/ocultar video
-function toggleVideoVisibility() {
-    isVideoVisible = !isVideoVisible;
-    
-    if (isVideoVisible) {
-        videoContainer.classList.remove('hidden');
-        videoToggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i>';
-        if (!player.paused && videoPlayer.paused) {
-            videoPlayer.play().catch(e => console.log("Error al reproducir video:", e));
-        }
-    } else {
-        videoContainer.classList.add('hidden');
-        videoToggleBtn.innerHTML = '<i class="fas fa-video"></i>';
-    }
-}
-
-// Llamar a initVideoPlayer después de setupMusicPlayer
- setupMusicPlayer();
-    initVideoPlayer();
-    setupAudioVisualizer();
-    
-    // Actualizar la función playCurrentTrack para manejar video
-    const originalPlayCurrentTrack = window.playCurrentTrack;
-    window.playCurrentTrack = function() {
-        originalPlayCurrentTrack();
-        syncVideoWithMusic();
-    };
-    
-    // Actualizar el evento de cambio de canción
-    player.addEventListener('ended', function() {
-        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-        player.src = tracks.eq(currentTrackIndex).data('src');
-        playCurrentTrack();
-        changeVideoTrack();
-    });
+            setupAudioVisualizer();
         });
 
     </script>
